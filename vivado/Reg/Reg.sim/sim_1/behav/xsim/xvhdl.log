@@ -1,0 +1,5 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/teletrabajo/WorkspaceVIVADO/gba/src/z80.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/teletrabajo/WorkspaceVIVADO/gba/src/reg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'reg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/teletrabajo/WorkspaceVIVADO/gba/test/reg_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'reg_tb'

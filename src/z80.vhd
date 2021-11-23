@@ -29,4 +29,6 @@ package z80 is
                   RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, --Rotate instructions
                   SLA_INST, SRA_INST, SRL_INST, --Shift instructions
                   BIT_INST, SET, RES); --Bit manipulation instructions
+    
+    constant sample_size : integer := 8;
 end package;
