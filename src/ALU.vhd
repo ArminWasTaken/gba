@@ -30,7 +30,7 @@ entity ALU is
            b : in signed (7 downto 0);
            a_16b : in signed (15 downto 0);
            b_16b : in signed (15 downto 0);
-           control : in inst; -- 24 8-bit instructions
+           control : in alu_inst_t; -- 24 8-bit instructions
            flags_in : in STD_LOGIC_VECTOR (7 downto 0); -- Only 4 flags used -> Z C N H
            flags_out : out STD_LOGIC_VECTOR (7 downto 0);
            output : out STD_LOGIC_VECTOR (7 downto 0);
