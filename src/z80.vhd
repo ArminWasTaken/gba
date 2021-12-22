@@ -23,6 +23,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 package z80 is
+
     type alu_inst_t is (
                   ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, --8 bit arithmetic instructions
                   ADD_16b, INC_16b, DEC_16b, --16 bit arithmetic instructions

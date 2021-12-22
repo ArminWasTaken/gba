@@ -47,13 +47,13 @@ entity reg is
     Port ( clk : in STD_LOGIC;
            enable : in STD_LOGIC;
            reset : in STD_LOGIC;
-           data_in : in signed(sample_size - 1 downto 0);
-           data_out : out signed(sample_size - 1 downto 0));
+           data_in : in signed(7 downto 0);
+           data_out : out signed(7 downto 0));
 end reg;
 
 architecture Behavioral of reg is
 
-    signal data_reg, data_next : signed(sample_size - 1 downto 0);
+    signal data_reg, data_next : signed(7 downto 0);
 
 begin
     
