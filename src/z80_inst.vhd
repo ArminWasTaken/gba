@@ -53,7 +53,7 @@ package z80_inst is
     );
     
     -- 16 bit Registers (8 bit Register pairs)
-    type reg16_t is (NONE, BC, DE, HL, SP, PC, AF, BC_CONTENT, DE_CONTENT, HL_CONTENT, SP_CONTENT, AF_CONTENT);
+    type reg16_t is (NONE, BC, DE, HL, SP, PC, AF);
     type regp1_lut_t is array(0 to 3) of reg16_t;
     constant regp1_lut: regp1_lut_t :=(
         0 => BC, 1 => DE, 2 => HL, 3 => SP
@@ -184,7 +184,7 @@ package body z80_inst is
                                              orig_8b => A, 
                                              dest_8b => NONE, 
                                              orig_16b => NONE, 
-                                             dest_16b => BC_CONTENT, 
+                                             dest_16b => BC, 
                                              orig_dir => REG,
                                              dest_dir => INDIRECT, 
                                              cond => NONE);
@@ -194,7 +194,7 @@ package body z80_inst is
                                              orig_8b => A, 
                                              dest_8b => NONE, 
                                              orig_16b => NONE, 
-                                             dest_16b => DE_CONTENT, 
+                                             dest_16b => DE, 
                                              orig_dir => REG,
                                              dest_dir => INDIRECT,
                                              cond => NONE);
@@ -226,7 +226,7 @@ package body z80_inst is
                                     inst := (inst_type => LD, 
                                              orig_8b => NONE, 
                                              dest_8b => A, 
-                                             orig_16b => BC_CONTENT,
+                                             orig_16b => BC,
                                              dest_16b => NONE, 
                                              orig_dir => INDIRECT,
                                              dest_dir => REG, 
@@ -236,7 +236,7 @@ package body z80_inst is
                                     inst := (inst_type => LD, 
                                              orig_8b => NONE, 
                                              dest_8b => A, 
-                                             orig_16b => DE_CONTENT,
+                                             orig_16b => DE,
                                              dest_16b => NONE, 
                                              orig_dir => INDIRECT,
                                              dest_dir => REG,
@@ -547,38 +547,137 @@ package body z80_inst is
                                 --(CB prefix) ???
                             when "010" =>
                                 --OUT (n), A
+                                inst := (inst_type => OUT_INST, 
+                                         orig_8b => A, 
+                                         dest_8b => NONE, 
+                                         orig_16b => NONE,
+                                         dest_16b => NONE, 
+                                         orig_dir => IMPLIED,
+                                         dest_dir => INDIRECT, 
+                                         cond => NONE);
                             when "011" =>
                                 --IN A, (n)
+                                inst := (inst_type => IN_INST, 
+                                         orig_8b => NONE, 
+                                         dest_8b => A, 
+                                         orig_16b => NONE,
+                                         dest_16b => NONE, 
+                                         orig_dir => INDIRECT,
+                                         dest_dir => IMPLIED, 
+                                         cond => NONE);
                             when "100" =>
                                 --EX (SP), HL
+                                inst := (inst_type => EX, 
+                                         orig_8b => NONE, 
+                                         dest_8b => NONE, 
+                                         orig_16b => HL,
+                                         dest_16b => SP, 
+                                         orig_dir => REG,
+                                         dest_dir => INDIRECT, 
+                                         cond => NONE);
                             when "101" =>
                                 --EX DE, HL
+                                inst := (inst_type => EX, 
+                                         orig_8b => NONE, 
+                                         dest_8b => NONE, 
+                                         orig_16b => HL,
+                                         dest_16b => DE, 
+                                         orig_dir => REG,
+                                         dest_dir => REG, 
+                                         cond => NONE);
                             when "110" =>
                                 --DI
+                                inst := (inst_type => DI, 
+                                         orig_8b => NONE, 
+                                         dest_8b => NONE, 
+                                         orig_16b => NONE,
+                                         dest_16b => NONE, 
+                                         orig_dir => NONE,
+                                         dest_dir => IMPLIED, 
+                                         cond => NONE);
                             when "111" =>
                                 --EI
+                                inst := (inst_type => EI, 
+                                         orig_8b => NONE, 
+                                         dest_8b => NONE, 
+                                         orig_16b => NONE,
+                                         dest_16b => NONE, 
+                                         orig_dir => NONE,
+                                         dest_dir => IMPLIED, 
+                                         cond => NONE);
                         end case;
                     when "100" =>
                         --CALL condition[y], nn
+                        inst := (inst_type => CALL, 
+                                 orig_8b => NONE, 
+                                 dest_8b => NONE, 
+                                 orig_16b => NONE,
+                                 dest_16b => NONE, 
+                                 orig_dir => IMPLIED,
+                                 dest_dir => IMPLIED, 
+                                 cond => condition_lut(to_integer(unsigned(y))));
                     when "101" =>
                         if (q = '0') then
                             --PUSH regp2[p]
+                            inst := (inst_type => PUSH, 
+                                     orig_8b => NONE, 
+                                     dest_8b => NONE, 
+                                     orig_16b => regp2_lut(to_integer(unsigned(p))),
+                                     dest_16b => NONE, -- (SP-1) and (SP-2)
+                                     orig_dir => REG,
+                                     dest_dir => IMPLIED, 
+                                     cond => NONE);
                         else
                             case p is
                                 when "00" =>
                                     --CALL nn
+                                    inst := (inst_type => CALL, 
+                                             orig_8b => NONE, 
+                                             dest_8b => NONE, 
+                                             orig_16b => NONE,
+                                             dest_16b => NONE, 
+                                             orig_dir => IMPLIED,
+                                             dest_dir => IMPLIED, 
+                                             cond => NONE);
                                 when "01" =>
-                                    --(DD prefix)
+                                    --(DD prefix) ???
                                 when "10" =>
-                                    --(ED prefix)
+                                    --(ED prefix) ???
                                 when "11" =>
-                                    --(FD prefix)
+                                    --(FD prefix) ???
                             end case;
                         end if;
                     when "110" =>
                         --alu[y] n
+                        if(y = "111") then  -- CP instruction does not return the result back to reg A as the rest of alu instructions do
+                            inst := (inst_type => alu_inst_lut(to_integer(unsigned(y))), 
+                                     orig_8b => NONE, 
+                                     dest_8b => NONE, 
+                                     orig_16b => NONE,
+                                     dest_16b => NONE, 
+                                     orig_dir => IMMEDIATE,
+                                     dest_dir => IMPLIED,  
+                                     cond => NONE);
+                        else
+                            inst := (inst_type => alu_inst_lut(to_integer(unsigned(y))), 
+                                     orig_8b => NONE, 
+                                     dest_8b => A, 
+                                     orig_16b => NONE,
+                                     dest_16b => NONE, 
+                                     orig_dir => IMMEDIATE,
+                                     dest_dir => IMPLIED,  
+                                     cond => NONE);
+                        end if;
                     when "111" =>
                         --RST y*8
+                        inst := (inst_type => RST, 
+                                 orig_8b => NONE, 
+                                 dest_8b => NONE, 
+                                 orig_16b => NONE,
+                                 dest_16b => NONE, -- (SP-1) and (SP-2)
+                                 orig_dir => MOD_P0,
+                                 dest_dir => IMPLIED, 
+                                 cond => NONE);
                 end case;
         end case;
         
