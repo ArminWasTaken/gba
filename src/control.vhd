@@ -59,6 +59,23 @@ begin
             state_reg <= state_next;
         end if;
     end process;
+    
+    -- Datapath register
+    dpr: process (clk, n_reset)
+    begin
+        if n_reset = '0' then
+            inst_reg <= (inst_type => NOP, 
+                         orig_8b => NONE, 
+                         dest_8b => NONE, 
+                         orig_16b => NONE, 
+                         dest_16b => NONE,
+                         orig_dir => NONE,
+                         dest_dir => NONE,  
+                         cond => NONE);
+        elsif rising_edge(clk) then
+            inst_reg <= inst_next;
+        end if;
+    end process;
 
     -- Next state logic
     nsl: process (state_reg)
@@ -73,6 +90,26 @@ begin
             when m1t4 =>
             --depende de la instrucción
             when others =>
+        end case;
+    end process;
+    
+    -- Datapath logic
+    dpl: process (inst_reg)
+    begin
+--        case inst_reg.inst_type is
+--            when others =>
+--        end case;
+    end process;
+    
+    -- Output logic
+    ol: process (state_reg, inst_reg)
+    begin 
+        case state_reg is 
+            when m1t1 =>
+                -- Addr_bus <= PC
+                -- n_mreq <= '1';
+                -- n_rd <= '1';
+                -- n_m1 <= '0';
         end case;
     end process;
     

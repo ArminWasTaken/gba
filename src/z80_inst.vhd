@@ -26,11 +26,17 @@ use IEEE.NUMERIC_STD.ALL;
 package z80_inst is
     
     type inst_type_t is (
-        ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, --8 bit arithmetic instructions
-        ADD_16b, INC_16b, DEC_16b, --16 bit arithmetic instructions
-        RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, RLD, RRD, --Rotate instructions
-        SLA_INST, SRA_INST, SRL_INST, --Shift instructions
-        BIT_INST, SET, RES, --Bit manipulation instructions
+        -- 8 bit arithmetic instructions
+        ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, 
+        -- 16 bit arithmetic instructions
+        ADD_16b, INC_16b, DEC_16b, 
+        -- Rotate instructions
+        RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, RLD, RRD, 
+        -- Shift instructions
+        SLA_INST, SRA_INST, SRL_INST, 
+        -- Bit manipulation instructions
+        BIT_INST, SET, RES, 
+        -- CPU instructions
         LD, PUSH, POP, EX, EXX, LDI, LDIR, LDD, LDDR, CPI, CPIR, CPD, CPDR,
         DAA, CPL, NEG, CCF, SCF, NOP, HALT, DI, EI, IM_0, IM_1, IM_2,
         JP, JR, DJNZ, CALL, RET, RETI, RETN, RST, 
