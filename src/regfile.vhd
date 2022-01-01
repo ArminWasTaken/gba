@@ -22,6 +22,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library WORK;
 use WORK.z80.ALL;
+use WORK.z80_inst.ALL;
 
 use IEEE.NUMERIC_STD.ALL;
 
@@ -32,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity regfile is
     Port ( clk : in STD_LOGIC;
-           control : in internal_ctrl;
+           control : in reg_ctrl;
            enable : in STD_LOGIC;
            reset : in STD_LOGIC;
            databus : inout signed(7 downto 0);
@@ -41,89 +42,154 @@ end regfile;
 
 architecture Behavioral of regfile is
 
-    -- 8 bit Registers
-    signal B_reg, B_next, C_reg, C_next, D_reg, D_next, E_reg, E_next, H_reg, H_next, L_reg, L_next, I_reg, I_next, R_reg, R_next : signed(7 downto 0);
+    type regfile_t is array (regfile8_t) of signed(7 downto 0);
+    signal regfile_next, regfile_reg: regfile_t;
+    signal regpair_flag_next, regpair_flag_reg: std_logic;
     
-    -- 16 bit Registers and Register pairs
-    signal BC_reg, BC_next, DE_reg, DE_next, HL_reg, HL_next, IX_reg, IX_next, IY_reg, IY_next, SP_reg, SP_next, PC_reg, PC_next : signed(15 downto 0);
+--    -- 8 bit Registers
+--    signal B_reg, B_next, C_reg, C_next, D_reg, D_next, E_reg, E_next, H_reg, H_next, L_reg, L_next : signed(7 downto 0);
+--    signal I_reg, I_next, R_reg, R_next : signed(7 downto 0);
+  
+    -- 16 bit Registers
+    signal  IX_reg, IX_next, IY_reg, IY_next, SP_reg, SP_next, PC_reg, PC_next : signed(15 downto 0);
     
-    -- Alternate Register set
-    ---- 8 bit Registers
-    signal B2_reg, B2_next, C2_reg, C2_next, D2_reg, D2_next, E2_reg, E2_next, H2_reg, H2_next, L2_reg, L2_next : signed(7 downto 0);
-    
-    ---- Register pairs
-    signal BC2_reg, BC2_next, DE2_reg, DE2_next, HL2_reg, HL2_next : signed(15 downto 0);    
+--    -- Alternate Register set
+--    ---- 8 bit Registers
+--    signal B2_reg, B2_next, C2_reg, C2_next, D2_reg, D2_next, E2_reg, E2_next, H2_reg, H2_next, L2_reg, L2_next : signed(7 downto 0);
 
 begin
     
-    process(clk, reset, databus) begin
-        if(rising_edge(clk)) then
-            if(reset = '1') then
-                -- 8 bit reg
-                B_next <= (others => '0');
-                C_next <= (others => '0');
-                D_next <= (others => '0');
-                E_next <= (others => '0');
-                H_next <= (others => '0');
-                L_next <= (others => '0');
-                I_next <= (others => '0');
-                R_next <= (others => '0');
-                -- 16 bit reg
-                BC_next <= (others => '0');
-                DE_next <= (others => '0');
-                HL_next <= (others => '0');
-                IX_next <= (others => '0');
-                IY_next <= (others => '0');
-                SP_next <= (others => '0'); -- Maybe not 
-                PC_next <= (others => '0'); -- Maybe not
-                -- Alternate set
-                B2_next <= (others => '0');
-                C2_next <= (others => '0');
-                D2_next <= (others => '0');
-                E2_next <= (others => '0');
-                H2_next <= (others => '0');
-                L2_next <= (others => '0');
-                BC2_next <= (others => '0');
-                DE2_next <= (others => '0');
-                HL2_next <= (others => '0');
-            elsif(enable ='1') then
-                
-            else 
-                
-            end if;
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            -- 8 bit reg
+            regfile_next <= (others => (others => '0'));
+            regpair_flag_next <= '0';
+            
+--            B_next <= (others => '0');
+--            C_next <= (others => '0');
+--            D_next <= (others => '0');
+--            E_next <= (others => '0');
+--            H_next <= (others => '0');
+--            L_next <= (others => '0');
+--            -- Alternate set
+--            B2_next <= (others => '0');
+--            C2_next <= (others => '0');
+--            D2_next <= (others => '0');
+--            E2_next <= (others => '0');
+--            H2_next <= (others => '0');
+--            L2_next <= (others => '0');
+--            -- Interrupt and refresh
+--            I_next <= (others => '0');
+--            R_next <= (others => '0');
+--            -- 16 bit reg
+            IX_next <= (others => '0');
+            IY_next <= (others => '0');
+            SP_next <= (others => '0'); 
+            PC_next <= (others => '0');
+        elsif rising_edge(clk) then
+            regfile_reg <= regfile_next;
+            regpair_flag_next <= regpair_flag_reg;
+            
+--            -- 8 bit reg
+--            B_reg <= B_next;
+--            C_reg <= C_next;
+--            D_reg <= D_next;
+--            E_reg <= E_next;
+--            H_reg <= H_next;
+--            L_reg <= L_next;
+--            -- Alternate set
+--            B2_reg <= B2_next;
+--            C2_reg <= C2_next;
+--            D2_reg <= D2_next;
+--            E2_reg <= E2_next;
+--            H2_reg <= H2_next;
+--            L2_reg <= L2_next;
+--            -- Interrupt and refresh
+--            I_reg <= I_next;
+--            R_reg <= R_next;
+            -- 16 bit reg
+            IX_reg <= IX_next;
+            IY_reg <= IY_next;
+            SP_reg <= SP_next;
+            PC_reg <= PC_next;
         end if;
     end process;
     
-    process(B_next, C_next, D_next, E_next, H_next, L_next, I_next, R_next, BC_next, DE_next, HL_next, IX_next, IY_next, SP_next, PC_next, 
-            B2_next, C2_next, D2_next, E2_next, H2_next, L2_next, BC2_next, DE2_next, HL2_next) 
+    process( regfile_next, SP_next, PC_next, regpair_flag_reg, control,
+--        B_next, C_next, D_next, E_next, H_next, L_next,
+--        I_next, R_next,
+             IX_next, IY_next, SP_next, PC_next
+--        B2_next, C2_next, D2_next, E2_next, H2_next, L2_next
+    ) 
     begin
-        -- 8 bit reg
-        B_reg <= B_next;
-        C_reg <= C_next;
-        D_reg <= D_next;
-        E_reg <= E_next;
-        H_reg <= H_next;
-        L_reg <= L_next;
-        I_reg <= I_next;
-        R_reg <= R_next;
-        -- 16 bit reg
-        BC_reg <= BC_next;
-        DE_reg <= DE_next;
-        HL_reg <= HL_next;
-        IX_reg <= IX_next;
-        IY_reg <= IY_next;
-        SP_reg <= SP_next;
-        PC_reg <= PC_next;
-        -- Alternate set
-        B2_reg <= B2_next;
-        C2_reg <= C2_next;
-        D2_reg <= D2_next;
-        E2_reg <= E2_next;
-        H2_reg <= H2_next;
-        L2_reg <= L2_next;
-        BC2_reg <= BC2_next; 
-        DE2_reg <= DE2_next; 
-        HL2_reg <= HL2_next; 
+        -- Default operation
+        regfile_next <= regfile_reg;
+        regpair_flag_next <= regpair_flag_reg;
+        
+        if control.reg_enable = '1' then    -- Data from databus only gets INTO the registers if reg_enable = '1' 
+            case control.dest8b is
+                when NONE =>
+                    case control.dest16b is
+                        when BC =>
+                            if regpair_flag_reg = '0' then
+                                regfile_next(C) <= databus;
+                                regpair_flag_next <= '1';
+                            else
+                                regfile_next(B) <= databus;
+                                regpair_flag_next <= '0';
+                            end if;
+                        when DE =>
+                            if regpair_flag_reg = '0' then
+                                regfile_next(E) <= databus;
+                                regpair_flag_next <= '1';
+                            else
+                                regfile_next(D) <= databus;
+                                regpair_flag_next <= '0';
+                            end if;
+                        when HL =>
+                            if regpair_flag_reg = '0' then
+                                regfile_next(L) <= databus;
+                                regpair_flag_next <= '1';
+                            else
+                                regfile_next(H) <= databus;
+                                regpair_flag_next <= '0';
+                            end if;
+                        when SP =>
+                            if regpair_flag_reg = '0' then
+                                SP_next(7 downto 0) <= databus;
+                                regpair_flag_next <= '1';
+                            else
+                                SP_next(15 downto 8) <= databus;
+                                regpair_flag_next <= '0';
+                            end if;
+                        when PC =>
+                            if regpair_flag_reg = '0' then
+                                PC_next(7 downto 0) <= databus;
+                                regpair_flag_next <= '1';
+                            else
+                                PC_next(15 downto 8) <= databus;
+                                regpair_flag_next <= '0';
+                            end if;
+                        when others=> -- NONE -> Default operation
+                    end case;
+                when others =>
+                    regfile_next(control.dest8b) <= databus;
+            end case;
+--        else 
+--            case control.orig8b is
+--                when NONE =>
+--                    case control.orig16b is
+--                        when NONE =>
+                            
+--                        when others =>
+                            
+--                    end case;
+--                when others =>
+--                    databus <= regfile_reg(control.dest8b);
+--            end case;
+        end if;
+        
     end process;
     
     

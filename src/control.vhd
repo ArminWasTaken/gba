@@ -35,7 +35,8 @@ entity control is
           n_halt : out std_logic;
           n_busrq : in std_logic;
           n_busack : out std_logic;
-          internal_ctrl : out internal_ctrl);
+          regfile_ctrl : out internal_ctrl;
+          alu_ctrl : out internal_ctrl);
 end control;
 
 architecture Behavioral of control is

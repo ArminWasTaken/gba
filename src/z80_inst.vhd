@@ -53,6 +53,8 @@ package z80_inst is
     
     -- 8 bit Registers
     type reg8_t is (NONE, B, C, D, E, H, L, HL_CONTENT, A, F);
+    subtype regfile8_t is reg8_t range B to L;
+    subtype alublock_t is reg8_t range A to F;
     type reg_lut_t is array(0 to 7) of reg8_t;
     constant reg_lut: reg_lut_t :=(
         0 => B, 1 => C, 2 => D, 3 => E, 4 => H, 5 => L, 6 => HL_CONTENT, 7 => A 
@@ -60,6 +62,7 @@ package z80_inst is
     
     -- 16 bit Registers (8 bit Register pairs)
     type reg16_t is (NONE, BC, DE, HL, SP, PC, AF);
+    subtype regfile16_t is reg16_t range BC to PC;
     type regp1_lut_t is array(0 to 3) of reg16_t;
     constant regp1_lut: regp1_lut_t :=(
         0 => BC, 1 => DE, 2 => HL, 3 => SP

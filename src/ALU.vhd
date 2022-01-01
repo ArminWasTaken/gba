@@ -24,13 +24,14 @@ use IEEE.NUMERIC_STD.ALL;
 
 library WORK;
 use WORK.z80.ALL;
+use WORK.z80_inst.ALL;
 
 entity ALU is
     Port ( a : in signed (7 downto 0);
            b : in signed (7 downto 0);
            a_16b : in signed (15 downto 0);
            b_16b : in signed (15 downto 0);
-           control : in alu_inst_t;
+           control : in inst_type_t;
            flags_in : in STD_LOGIC_VECTOR (7 downto 0); -- Only 4 flags used -> Z C N H
            flags_out : out STD_LOGIC_VECTOR (7 downto 0);
            output : out STD_LOGIC_VECTOR (7 downto 0);

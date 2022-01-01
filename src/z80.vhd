@@ -22,6 +22,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
+library WORK;
+use WORK.z80_inst.ALL;
+
 package z80 is
 
     type alu_inst_t is (
@@ -48,7 +51,26 @@ package z80 is
     end record;
     
     type internal_ctrl is record
-        tmp: std_logic;
+        enable: std_logic;
+        --mux_ctrl: ;
+        inst: inst_t;
+    end record;
+    
+    type reg_ctrl is record
+        rst: std_logic;
+        reg_enable: std_logic;
+        orig8b: reg8_t;
+        dest8b: reg8_t;
+        orig16b: reg16_t;
+        dest16b: reg16_t;
+        orig_dir: dir_t;
+        dest_dir: dir_t;
+    end record;
+    
+    type alublock_ctrl is record
+        reg_enable: std_logic;
+        --mux_ctrl: ;
+        inst: inst_t;
     end record;
   
 end package;
