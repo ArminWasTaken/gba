@@ -34,8 +34,6 @@ use IEEE.NUMERIC_STD.ALL;
 entity regfile is
     Port ( clk : in STD_LOGIC;
            control : in reg_ctrl;
-           enable : in STD_LOGIC;
-           reset : in STD_LOGIC;
            databus : inout signed(7 downto 0);
            addrbus : out signed(15 downto 0));
 end regfile;
@@ -59,12 +57,12 @@ architecture Behavioral of regfile is
 
 begin
     
-    process(clk, reset)
+    process(clk, control.rst)
     begin
-        if reset = '1' then
+        if control.rst = '1' then
             -- 8 bit reg
-            regfile_next <= (others => (others => '0'));
-            regpair_flag_next <= '0';
+            regfile_reg <= (others => (others => '0'));
+            regpair_flag_reg <= '0';
             
 --            B_next <= (others => '0');
 --            C_next <= (others => '0');
@@ -83,13 +81,13 @@ begin
 --            I_next <= (others => '0');
 --            R_next <= (others => '0');
 --            -- 16 bit reg
-            IX_next <= (others => '0');
-            IY_next <= (others => '0');
-            SP_next <= (others => '0'); 
-            PC_next <= (others => '0');
+            IX_reg <= (others => '0');
+            IY_reg <= (others => '0');
+            SP_reg <= (others => '0'); 
+            PC_reg <= (others => '0');
         elsif rising_edge(clk) then
             regfile_reg <= regfile_next;
-            regpair_flag_next <= regpair_flag_reg;
+            regpair_flag_reg <= regpair_flag_next;
             
 --            -- 8 bit reg
 --            B_reg <= B_next;
@@ -116,10 +114,10 @@ begin
         end if;
     end process;
     
-    process( regfile_next, SP_next, PC_next, regpair_flag_reg, control,
+    process( regpair_flag_reg, control, databus, regfile_next, regfile_reg, SP_next, SP_reg, PC_next, PC_reg, 
 --        B_next, C_next, D_next, E_next, H_next, L_next,
 --        I_next, R_next,
-             IX_next, IY_next, SP_next, PC_next
+             IX_next, IY_next
 --        B2_next, C2_next, D2_next, E2_next, H2_next, L2_next
     ) 
     begin
@@ -176,22 +174,102 @@ begin
                 when others =>
                     regfile_next(control.dest8b) <= databus;
             end case;
---        else 
---            case control.orig8b is
---                when NONE =>
---                    case control.orig16b is
---                        when NONE =>
-                            
---                        when others =>
-                            
---                    end case;
---                when others =>
---                    databus <= regfile_reg(control.dest8b);
---            end case;
+        else                                -- reg_enable = '0' -> Data is read FROM the registers 
+            case control.orig8b is
+                when NONE =>
+                    if control.bustype = DATAB then
+                        case control.orig16b is
+                            when BC =>
+                                if regpair_flag_reg = '0' then
+                                    databus <= regfile_reg(C);
+                                    regpair_flag_next <= '1';
+                                else
+                                    databus <= regfile_reg(B);
+                                    regpair_flag_next <= '0';
+                                end if;
+                            when DE =>
+                                if regpair_flag_reg = '0' then
+                                    databus <= regfile_reg(E);
+                                    regpair_flag_next <= '1';
+                                else
+                                    databus <= regfile_reg(D);
+                                    regpair_flag_next <= '0';
+                                end if;
+                            when HL =>
+                                if regpair_flag_reg = '0' then
+                                    databus <= regfile_reg(H);
+                                    regpair_flag_next <= '1';
+                                else
+                                    databus <= regfile_reg(L);
+                                    regpair_flag_next <= '0';
+                                end if;
+                            when SP =>
+                                if regpair_flag_reg = '0' then
+                                    databus <= SP_reg(7 downto 0);
+                                    regpair_flag_next <= '1';
+                                else
+                                    databus <= SP_reg(15 downto 8);
+                                    regpair_flag_next <= '0';
+                                end if;
+                            when PC =>
+                                if regpair_flag_reg = '0' then
+                                    databus <= PC_reg(7 downto 0);
+                                    regpair_flag_next <= '1';
+                                else
+                                    databus <= PC_reg(15 downto 8);
+                                    regpair_flag_next <= '0';
+                                end if;
+                            when others=> -- NONE -> Default operation
+                        end case;
+                    else
+                        case control.orig16b is
+                            when BC =>
+                                addrbus(7 downto 0) <= regfile_reg(C);
+                                addrbus(15 downto 8) <= regfile_reg(B);
+                            when DE =>
+                                addrbus(7 downto 0) <= regfile_reg(D);
+                                addrbus(15 downto 8) <= regfile_reg(E);
+                            when HL =>
+                                addrbus(7 downto 0) <= regfile_reg(H);
+                                addrbus(15 downto 8) <= regfile_reg(L);
+                            when SP =>
+                                addrbus <= SP_reg;
+                            when PC =>
+                                addrbus <= PC_reg;
+                            when others=> -- NONE -> Default operation
+                        end case;
+                    end if;
+                when others =>
+                    if control.bustype = DATAB then
+                            databus <= regfile_reg(control.orig8b);
+                        else
+                            addrbus(7 downto 0) <= regfile_reg(control.orig8b);
+                    end if;
+            end case;
+            
+            case control.dest8b is
+                when NONE =>
+                    case control.dest16b is
+                        when BC =>
+                            addrbus(7 downto 0) <= regfile_reg(C);
+                            addrbus(15 downto 8) <= regfile_reg(B);
+                        when DE =>
+                            addrbus(7 downto 0) <= regfile_reg(D);
+                            addrbus(15 downto 8) <= regfile_reg(E);
+                        when HL =>
+                            addrbus(7 downto 0) <= regfile_reg(H);
+                            addrbus(15 downto 8) <= regfile_reg(L);
+                        when SP =>
+                            addrbus <= SP_reg;
+                        when PC =>
+                            addrbus <= PC_reg;
+                        when others=> -- NONE -> Default operation
+                    end case;
+                when others =>
+                    addrbus(7 downto 0) <= regfile_reg(control.dest8b);
+            end case;
         end if;
         
     end process;
     
-    
-
 end Behavioral;

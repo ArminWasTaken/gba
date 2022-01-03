@@ -28,12 +28,17 @@ use WORK.z80_inst.ALL;
 package z80 is
 
     type alu_inst_t is (
-                  ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, --8 bit arithmetic instructions
-                  ADD_16b, INC_16b, DEC_16b, --16 bit arithmetic instructions
-                  RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, --Rotate instructions
-                  SLA_INST, SRA_INST, SRL_INST, --Shift instructions
-                  BIT_INST, SET, RES --Bit manipulation instructions
-                  ); 
+        NONE,
+        ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, --8 bit arithmetic instructions
+        ADD_16b, INC_16b, DEC_16b, --16 bit arithmetic instructions
+        RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, --Rotate instructions
+        SLA_INST, SRA_INST, SRL_INST, --Shift instructions
+        BIT_INST, SET, RES --Bit manipulation instructions
+        ); 
+    
+    type bus_t is (
+        DATAB, ADDRB
+        );
                   
     type sys_ctrl is record
         n_m1: std_logic;
@@ -63,8 +68,9 @@ package z80 is
         dest8b: reg8_t;
         orig16b: reg16_t;
         dest16b: reg16_t;
-        orig_dir: dir_t;
-        dest_dir: dir_t;
+--        orig_dirtype: dir_t;
+--        dest_dirtype: dir_t;
+        bustype: bus_t;
     end record;
     
     type alublock_ctrl is record
