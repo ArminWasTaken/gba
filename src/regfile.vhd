@@ -34,26 +34,26 @@ use IEEE.NUMERIC_STD.ALL;
 entity regfile is
     Port ( clk : in STD_LOGIC;
            control : in reg_ctrl;
-           databus : inout signed(7 downto 0);
-           addrbus : out signed(15 downto 0));
+           databus : inout std_logic_vector(7 downto 0);
+           addrbus : out std_logic_vector(15 downto 0) );
 end regfile;
 
 architecture Behavioral of regfile is
 
-    type regfile_t is array (regfile8_t) of signed(7 downto 0);
+    type regfile_t is array (regfile8_t) of std_logic_vector(7 downto 0);
     signal regfile_next, regfile_reg: regfile_t;
     signal regpair_flag_next, regpair_flag_reg: std_logic;
     
 --    -- 8 bit Registers
---    signal B_reg, B_next, C_reg, C_next, D_reg, D_next, E_reg, E_next, H_reg, H_next, L_reg, L_next : signed(7 downto 0);
---    signal I_reg, I_next, R_reg, R_next : signed(7 downto 0);
+--    signal B_reg, B_next, C_reg, C_next, D_reg, D_next, E_reg, E_next, H_reg, H_next, L_reg, L_next : std_logic_vector(7 downto 0);
+--    signal I_reg, I_next, R_reg, R_next : std_logic_vector(7 downto 0);
   
     -- 16 bit Registers
-    signal  IX_reg, IX_next, IY_reg, IY_next, SP_reg, SP_next, PC_reg, PC_next : signed(15 downto 0);
+    signal  IX_reg, IX_next, IY_reg, IY_next, SP_reg, SP_next, PC_reg, PC_next : std_logic_vector(15 downto 0);
     
 --    -- Alternate Register set
 --    ---- 8 bit Registers
---    signal B2_reg, B2_next, C2_reg, C2_next, D2_reg, D2_next, E2_reg, E2_next, H2_reg, H2_next, L2_reg, L2_next : signed(7 downto 0);
+--    signal B2_reg, B2_next, C2_reg, C2_next, D2_reg, D2_next, E2_reg, E2_next, H2_reg, H2_next, L2_reg, L2_next : std_logic_vector(7 downto 0);
 
 begin
     

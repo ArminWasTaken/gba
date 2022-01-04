@@ -32,11 +32,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity ALU_block is
     Port ( clk : in STD_LOGIC;
-           control : in internal_ctrl;
-           enable : in STD_LOGIC;
-           reset : in STD_LOGIC;
-           databus : inout signed(7 downto 0);
-           addrbus : out signed(15 downto 0));
+           control : in alublock_ctrl;
+           databus : inout std_logic_vector(7 downto 0) );
 end ALU_block;
 
 architecture Behavioral of ALU_block is
@@ -46,31 +43,27 @@ architecture Behavioral of ALU_block is
         b : in signed (7 downto 0);
         a_16b : in signed (15 downto 0);
         b_16b : in signed (15 downto 0);
-        control : in alu_inst_t;
+        control : in alublock_ctrl;
         flags_in : in STD_LOGIC_VECTOR (7 downto 0);
         flags_out : out STD_LOGIC_VECTOR (7 downto 0);
         output : out STD_LOGIC_VECTOR (7 downto 0);
-        output_16b : out STD_LOGIC_VECTOR (15 downto 0));
+        output_16b : out STD_LOGIC_VECTOR (15 downto 0) );
     end component;
     
     -- 8 bit Registers
-    signal A_reg, A_next, F_reg, F_next : signed(7 downto 0);
-    signal temp_reg, temp_next, tempA_reg, tempA_next : signed(15 downto 0);
-    
-    -- 16 bit Registers and Register pairs
-    signal AF_reg, AF_next : signed(15 downto 0);
+    signal A_reg, A_next : std_logic_vector(7 downto 0);
+    signal F_reg, F_next : std_logic_vector(7 downto 0);
+    signal temp_reg, temp_next, tempA_reg, tempA_next : std_logic_vector(15 downto 0);
     
     -- Alternate Register set
     ---- 8 bit Registers
-    signal A2_reg, A2_next, F2_reg, F2_next : signed(7 downto 0);
-    
-    ---- Register pairs
-    signal AF2_reg, AF2_next : signed(15 downto 0);    
+    signal A2_reg, A2_next : std_logic_vector(7 downto 0); 
+    signal F2_reg, F2_next : std_logic_vector(7 downto 0);
     
     -- ALU block signals
     signal a_input, b_input : signed(7 downto 0);
     signal a_16b_input, b_16b_input : signed(15 downto 0);
-    signal flags_input : STD_LOGIC_VECTOR(7 downto 0);
+    signal alu_output, flags_input, flags_output : STD_LOGIC_VECTOR(7 downto 0);
 begin
     
     ALU1: ALU port map(
@@ -78,48 +71,84 @@ begin
             b => b_input,
             a_16b => a_16b_input,
             b_16b => b_16b_input,
-            control => control, -- Changes required to  internal control type (and ALU control signal)
-            flags_in => flags_input);
+            control => control,
+            flags_in => flags_input,
+            flags_out => flags_output,
+            output => alu_output);
     
-    process(clk, reset, databus) begin
-        if(rising_edge(clk)) then
-            if(reset = '1') then
-                -- 8 bit reg
-                A_next <= (others => '0');
-                F_next <= (others => '0');
-                temp_next <= (others => '0');
-                tempA_next <= (others => '0');
-                -- 16 bit reg
-                AF_next <= (others => '0');
-                -- Alternate set
-                A2_next <= (others => '0');
-                F2_next <= (others => '0');
-                AF2_next <= (others => '0');
-            elsif(enable ='1') then
-                
-            else 
-                
-            end if;
+    process(clk, control.rst) 
+    begin
+        if(control.rst = '1') then
+            -- 8 bit reg
+            A_reg <= (others => '0');
+            F_reg <= (others => '0');
+            temp_reg <= (others => '0');
+            tempA_reg <= (others => '0');
+            -- Alternate set
+            A2_reg <= (others => '0');
+            F2_reg <= (others => '0');
+        elsif(rising_edge(clk)) then
+            -- 8 bit reg
+            A_reg <= A_next;
+            F_reg <= F_next;
+            temp_reg <= temp_next;
+            tempA_reg <= tempA_next;
+            -- Alternate set
+            A2_reg <= A2_next;
+            F2_reg <= F2_next; 
         end if;
     end process;
     
-    process(A_next, F_next, temp_next, tempA_next, 
-            A2_next, F2_next, AF2_next) 
+    process(databus, control, A_next, F_next, temp_next, tempA_next, 
+            A2_next, F2_next) 
     begin
+        -- Default
         -- 8 bit reg
-        A_reg <= A_next;
-        F_reg <= F_next;
-        temp_reg <= temp_next;
-        tempA_reg <= tempA_next;
-        -- 16 bit reg
-        AF_reg <= AF_next;
+        A_next <= A_reg;
+        F_next <= F_reg;
+        temp_next <= temp_reg;
+        tempA_next <= tempA_reg;
         -- Alternate set
-        A2_reg <= A2_next;
-        F2_reg <= F2_next;
-        AF2_reg <= AF2_next; 
+        A2_next <= A2_reg;
+        F2_next <= F2_reg;
+        
+        if control.reg_enable = '1' then
+            tempA_next <= A_reg;
+            F_next <= flags_output;
+                case control.dest is
+                    when A =>
+                        A_next <= databus;
+                    when TEMP =>
+                        temp_next <= databus;
+                    when F =>
+                        F_next <= databus;
+                    when others =>
+                end case;
+        end if;
     end process;
     
+    process(tempA_reg, temp_reg, F_reg)
+    begin
     
-
+    case control.dest is
+        when A =>
+            databus <= A_reg;
+        when TEMP =>
+            databus <= temp_reg;
+        when F =>
+            databus <= F_reg;
+        when ALU_OUT =>
+            databus <= alu_output;
+    end case;
+    
+    a_input <= signed(tempA_reg);
+    b_input <= signed(temp_reg);
+    
+    a_16b_input <= (others => '0'); -- For now
+    b_16b_input <= (others => '0'); -- For now
+    
+    flags_input <= F_reg;
+    end process;
+    
 end Behavioral;
 

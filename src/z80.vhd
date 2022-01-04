@@ -28,13 +28,17 @@ use WORK.z80_inst.ALL;
 package z80 is
 
     type alu_inst_t is (
-        NONE,
+        NONE, EX_AF, -- Idle mode and AF <-> A'F' content swap instruction
         ADD, ADC, SUB, SBC, LOGIC_AND, LOGIC_OR, LOGIC_XOR, CP, INC, DEC, --8 bit arithmetic instructions
         ADD_16b, INC_16b, DEC_16b, --16 bit arithmetic instructions
         RLCA, RLC, RLA, RL, RRCA, RRC, RRA, RR, --Rotate instructions
         SLA_INST, SRA_INST, SRL_INST, --Shift instructions
         BIT_INST, SET, RES --Bit manipulation instructions
         ); 
+    
+    type alu_dest_t is (
+        A, TEMP, F, ALU_OUT
+        );
     
     type bus_t is (
         DATAB, ADDRB
@@ -74,9 +78,12 @@ package z80 is
     end record;
     
     type alublock_ctrl is record
+        rst: std_logic;
         reg_enable: std_logic;
+        alu_enable: std_logic;
+        dest: alu_dest_t;
         --mux_ctrl: ;
-        inst: inst_t;
+        inst: alu_inst_t;
     end record;
   
 end package;
