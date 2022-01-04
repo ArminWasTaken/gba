@@ -53,7 +53,7 @@ architecture Behavioral of ALU_block is
     -- 8 bit Registers
     signal A_reg, A_next : std_logic_vector(7 downto 0);
     signal F_reg, F_next : std_logic_vector(7 downto 0);
-    signal temp_reg, temp_next, tempA_reg, tempA_next : std_logic_vector(15 downto 0);
+    signal temp_reg, temp_next, tempA_reg, tempA_next : std_logic_vector(7 downto 0);
     
     -- Alternate Register set
     ---- 8 bit Registers
@@ -99,8 +99,8 @@ begin
         end if;
     end process;
     
-    process(databus, control, A_next, F_next, temp_next, tempA_next, 
-            A2_next, F2_next) 
+    process(databus, control, A_reg, F_reg, temp_reg, tempA_reg, 
+            A2_reg, F2_reg, flags_output) 
     begin
         -- Default
         -- 8 bit reg
@@ -127,7 +127,8 @@ begin
         end if;
     end process;
     
-    process(tempA_reg, temp_reg, F_reg)
+    process(control, A_reg, F_reg, tempA_reg, temp_reg, 
+            alu_output, flags_output)
     begin
     
     case control.dest is
