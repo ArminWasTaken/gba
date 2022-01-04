@@ -43,6 +43,10 @@ package z80 is
     type bus_t is (
         DATAB, ADDRB
         );
+        
+    type mux_ctrl_t is (
+        REG, ALU, MEM
+        );
                   
     type sys_ctrl is record
         n_m1: std_logic;
@@ -61,8 +65,8 @@ package z80 is
     
     type internal_ctrl is record
         enable: std_logic;
-        --mux_ctrl: ;
         inst: inst_t;
+        mux_ctrl: mux_ctrl_t;
     end record;
     
     type reg_ctrl is record
@@ -82,7 +86,6 @@ package z80 is
         reg_enable: std_logic;
         alu_enable: std_logic;
         dest: alu_dest_t;
-        --mux_ctrl: ;
         inst: alu_inst_t;
     end record;
   
