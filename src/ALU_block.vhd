@@ -33,7 +33,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity ALU_block is
     Port ( clk : in STD_LOGIC;
            control : in alublock_ctrl;
-           databus : inout std_logic_vector(7 downto 0) );
+           data_in : in std_logic_vector(7 downto 0);
+           data_out : out std_logic_vector(7 downto 0) );
 end ALU_block;
 
 architecture Behavioral of ALU_block is
@@ -76,7 +77,8 @@ begin
             flags_out => flags_output,
             output => alu_output);
     
-    process(clk, control.rst) 
+    -- ALU Registers
+    alu_r: process(clk, control.rst) 
     begin
         if(control.rst = '1') then
             -- 8 bit reg
@@ -99,8 +101,10 @@ begin
         end if;
     end process;
     
-    process(databus, control, A_reg, F_reg, temp_reg, tempA_reg, 
-            A2_reg, F2_reg, flags_output) 
+    -- Input logic
+    alu_il: process(data_in, control.reg_enable, control.din_alu
+            --A_reg, F_reg, temp_reg, tempA_reg, A2_reg, F2_reg, flags_output
+            ) 
     begin
         -- Default
         -- 8 bit reg
@@ -115,31 +119,32 @@ begin
         if control.reg_enable = '1' then
             tempA_next <= A_reg;
             F_next <= flags_output;
-                case control.dest is
+                case control.din_alu is
                     when A =>
-                        A_next <= databus;
+                        A_next <= data_in;
                     when TEMP =>
-                        temp_next <= databus;
+                        temp_next <= data_in;
                     when F =>
-                        F_next <= databus;
+                        F_next <= data_in;
                     when others =>
                 end case;
         end if;
     end process;
     
-    process(control, A_reg, F_reg, tempA_reg, temp_reg, 
+    -- Output logic
+    alu_ol: process(control.dout_alu, A_reg, F_reg, tempA_reg, temp_reg, 
             alu_output, flags_output)
     begin
     
-    case control.dest is
+    case control.dout_alu is
         when A =>
-            databus <= A_reg;
+            data_out <= A_reg;
         when TEMP =>
-            databus <= temp_reg;
+            data_out <= temp_reg;
         when F =>
-            databus <= F_reg;
+            data_out <= F_reg;
         when ALU_OUT =>
-            databus <= alu_output;
+            data_out <= alu_output;
     end case;
     
     a_input <= signed(tempA_reg);

@@ -94,7 +94,7 @@ begin
                     op := resize(a, result'length) + resize(b, result'length);
                     result <= op + C_inv;
                     if(result = "000000000") then
-                        Z<='1';
+                        Z <= '1';
                     else 
                         Z <= '0';
                     end if;

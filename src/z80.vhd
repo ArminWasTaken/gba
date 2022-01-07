@@ -40,10 +40,6 @@ package z80 is
         A, TEMP, F, ALU_OUT
         );
     
-    type bus_t is (
-        DATAB, ADDRB
-        );
-        
     type mux_ctrl_t is (
         REG, ALU, MEM
         );
@@ -72,21 +68,23 @@ package z80 is
     type reg_ctrl is record
         rst: std_logic;
         reg_enable: std_logic;
-        orig8b: reg8_t;
-        dest8b: reg8_t;
-        orig16b: reg16_t;
-        dest16b: reg16_t;
---        orig_dirtype: dir_t;
---        dest_dirtype: dir_t;
-        bustype: bus_t;
+        din_reg: reg8_t;
+        dout_reg: reg8_t;
+        addr_reg: reg16_t;
+--        orig8b: reg8_t;
+--        dest8b: reg8_t;
+--        orig16b: reg16_t;
+--        dest16b: reg16_t;
+--        bustype: bus_t;
     end record;
     
     type alublock_ctrl is record
         rst: std_logic;
         reg_enable: std_logic;
         alu_enable: std_logic;
-        dest: alu_dest_t;
         inst: alu_inst_t;
+        din_alu: alu_dest_t;
+        dout_alu: alu_dest_t;
     end record;
   
 end package;

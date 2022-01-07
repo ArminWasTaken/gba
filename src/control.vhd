@@ -101,12 +101,13 @@ begin
 --            when others =>
 --        end case;
     end process;
-    
+
     -- Output logic
     ol: process (state_reg, inst_reg)
     begin 
         case state_reg is 
             when m1t1 =>
+                -- case instr is... cosas
                 -- Addr_bus <= PC
                 -- n_mreq <= '1';
                 -- n_rd <= '1';
