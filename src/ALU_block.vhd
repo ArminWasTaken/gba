@@ -102,9 +102,7 @@ begin
     end process;
     
     -- Input logic
-    alu_il: process(data_in, control.reg_enable, control.din_alu
-            --A_reg, F_reg, temp_reg, tempA_reg, A2_reg, F2_reg, flags_output
-            ) 
+    alu_il: process(data_in, control.reg_enable, control.din_alu, A_reg, F_reg, temp_reg, tempA_reg, A2_reg, F2_reg, flags_output) 
     begin
         -- Default
         -- 8 bit reg

@@ -114,8 +114,7 @@ begin
     end process;
     
     -- Data in logic
-    dil: process(control.reg_enable, control.din_reg --, data_in
-                 ) 
+    dil: process(control.reg_enable, control.din_reg, data_in, regfile_reg, SP_reg, PC_reg, IX_reg, IY_reg) 
     begin
         -- Default operation
         regfile_next <= regfile_reg;
@@ -150,8 +149,7 @@ begin
     end process;
     
     -- Output logic
-    ol: process(control.dout_reg, control.addr_reg --, regfile_reg, SP_reg, PC_reg, IX_reg, IY_reg
-                )
+    ol: process(control.dout_reg, control.addr_reg, regfile_reg, SP_reg, PC_reg, IX_reg, IY_reg)
     begin
         data_out <= (others => '0');
         addr_out <= (others => '0');
