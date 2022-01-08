@@ -41,7 +41,7 @@ package z80 is
         );
     
     type mux_ctrl_t is (
-        REG, ALU, MEM
+        REG, ALU, MEM, EXT
         );
                   
     type sys_ctrl_t is record
@@ -57,12 +57,6 @@ package z80 is
         n_wait: std_logic;
         n_int: std_logic;
         n_nmi: std_logic;
-    end record;
-    
-    type internal_ctrl_t is record
-        enable: std_logic;
-        inst: inst_t;
-        mux_ctrl: mux_ctrl_t;
     end record;
     
     type reg_ctrl_t is record

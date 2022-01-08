@@ -35,10 +35,11 @@ use WORK.z80_inst.ALL;
 --use UNISIM.VComponents.all;
 
 entity databus_mux is
-    Port ( control: in internal_ctrl_t;
+    Port ( control: in mux_ctrl_t;
            reg_data: in std_logic_vector(7 downto 0);
            alu_data: in std_logic_vector(7 downto 0);
            mem_data: in std_logic_vector(7 downto 0);
+           ext_data: in std_logic_vector(7 downto 0);
            databus: out std_logic_vector(7 downto 0) );
 end databus_mux;
 
@@ -49,13 +50,15 @@ begin
     process(control, reg_data, alu_data, mem_data)
     begin
         
-        case control.mux_ctrl is
+        case control is
             when REG =>
                 databus <= reg_data;
             when ALU =>
                 databus <= alu_data;
             when MEM =>
                 databus <= mem_data;
+            when EXT =>
+                databus <= ext_data;
         end case;  
     
     end process;
