@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../src/z80_inst.vhd" \
+"../../../../../../src/z80.vhd" \
+"../../../../../../src/ALU.vhd" \
+"../../../../../../src/ALU_block.vhd" \
+"../../../../../../test/ALU_block_tb.vhd" \
+
+# Do not sort compile order
+nosort

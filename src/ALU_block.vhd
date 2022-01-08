@@ -143,6 +143,8 @@ begin
             data_out <= F_reg;
         when ALU_OUT =>
             data_out <= alu_output;
+        when others =>
+            data_out <= (others => '0');
     end case;
     
     a_input <= signed(tempA_reg);

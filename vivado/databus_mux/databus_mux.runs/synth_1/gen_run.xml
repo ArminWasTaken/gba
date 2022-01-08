@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1641318372">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1641658932">
   <File Type="PA-TCL" Name="databus_mux.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="databus_mux_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="databus_mux_reports.tcl"/>

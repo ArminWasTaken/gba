@@ -37,7 +37,7 @@ package z80 is
         ); 
     
     type alu_dest_t is (
-        A, TEMP, F, ALU_OUT
+        NONE, A, TEMP, F, ALU_OUT
         );
     
     type mux_ctrl_t is (

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1641530068">
   <File Type="PA-TCL" Name="regfile.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="regfile_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="regfile_reports.tcl"/>
   <File Type="RDS-RDS" Name="regfile.vds"/>
   <File Type="RDS-UTIL" Name="regfile_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="regfile_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="regfile.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="regfile_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="regfile_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/z80_inst.vhd">

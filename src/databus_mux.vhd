@@ -48,7 +48,7 @@ begin
 
     process(control, reg_data, alu_data, mem_data)
     begin
-    
+        
         case control.mux_ctrl is
             when REG =>
                 databus <= reg_data;

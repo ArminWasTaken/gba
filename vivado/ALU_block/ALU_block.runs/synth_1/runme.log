@@ -14,9 +14,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 16052 
+INFO: Helper process launched with PID 12476 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 430.000 ; gain = 97.574
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 429.055 ; gain = 97.625
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'ALU_block' [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:40]
 INFO: [Synth 8-3491] module 'ALU' declared at 'C:/Users/nccas/VivadoWorkspace/gba/src/ALU.vhd:29' bound to instance 'ALU1' of component 'ALU' [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:70]
@@ -27,8 +27,10 @@ WARNING: [Synth 8-6014] Unused sequential element F2_reg_reg was removed.  [C:/U
 INFO: [Synth 8-256] done synthesizing module 'ALU_block' (2#1) [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:40]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[rst]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[reg_enable]
+WARNING: [Synth 8-3331] design ALU has unconnected port control[din_alu][2]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[din_alu][1]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[din_alu][0]
+WARNING: [Synth 8-3331] design ALU has unconnected port control[dout_alu][2]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[dout_alu][1]
 WARNING: [Synth 8-3331] design ALU has unconnected port control[dout_alu][0]
 WARNING: [Synth 8-3331] design ALU has unconnected port flags_in[7]
@@ -36,25 +38,27 @@ WARNING: [Synth 8-3331] design ALU has unconnected port flags_in[6]
 WARNING: [Synth 8-3331] design ALU has unconnected port flags_in[5]
 WARNING: [Synth 8-3331] design ALU has unconnected port flags_in[4]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 486.660 ; gain = 154.234
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 486.121 ; gain = 154.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 486.660 ; gain = 154.234
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 486.121 ; gain = 154.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 486.660 ; gain = 154.234
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 486.121 ; gain = 154.691
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/nccas/VivadoWorkspace/gba/src/ALU.vhd:82]
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/nccas/VivadoWorkspace/gba/src/ALU.vhd:82]
 INFO: [Synth 8-5546] ROM "Z" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "Z" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "A_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "temp_next" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 486.660 ; gain = 154.234
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 486.121 ; gain = 154.691
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -78,11 +82,12 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 4     
 +---Muxes : 
 	  28 Input     17 Bit        Muxes := 2     
-	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
 	  28 Input      2 Bit        Muxes := 2     
 	   4 Input      1 Bit        Muxes := 4     
 	  28 Input      1 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 6     
+	   2 Input      1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -95,7 +100,9 @@ Detailed RTL Component Info :
 +---Registers : 
 	                8 Bit    Registers := 4     
 +---Muxes : 
-	   4 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 	   4 Input      1 Bit        Muxes := 2     
 Module ALU 
 Detailed RTL Component Info : 
@@ -132,7 +139,7 @@ Warning: Parallel synthesis criteria is not met
 INFO: [Synth 8-5546] ROM "ALU1/Z" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ALU1/Z" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -145,7 +152,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -157,7 +164,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -181,7 +188,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -194,7 +201,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -206,25 +213,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -243,13 +250,13 @@ Report Cell Usage:
 |1     |BUFG   |     1|
 |2     |CARRY4 |     9|
 |3     |LUT1   |     1|
-|4     |LUT2   |    38|
-|5     |LUT3   |    13|
-|6     |LUT4   |    25|
-|7     |LUT5   |    32|
+|4     |LUT2   |    31|
+|5     |LUT3   |     6|
+|6     |LUT4   |    31|
+|7     |LUT5   |    38|
 |8     |LUT6   |   108|
 |9     |FDCE   |    32|
-|10    |IBUF   |    21|
+|10    |IBUF   |    23|
 |11    |OBUF   |     8|
 +------+-------+------+
 
@@ -258,30 +265,30 @@ Report Instance Areas:
 |      |Instance |Module |Cells |
 +------+---------+-------+------+
 |1     |top      |       |   288|
-|2     |  ALU1   |ALU    |   100|
+|2     |  ALU1   |ALU    |    99|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
-Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 649.402 ; gain = 316.977
+Synthesis finished with 0 errors, 0 critical warnings and 14 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
+Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 649.168 ; gain = 317.738
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 744.055 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 743.445 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-20 Infos, 12 Warnings, 0 Critical Warnings and 0 Errors encountered.
+22 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 744.055 ; gain = 424.648
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 744.055 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 743.445 ; gain = 425.168
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 743.445 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/nccas/VivadoWorkspace/gba/vivado/ALU_block/ALU_block.runs/synth_1/ALU_block.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file ALU_block_utilization_synth.rpt -pb ALU_block_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Jan  7 05:39:40 2022...
+INFO: [Common 17-206] Exiting Vivado at Sat Jan  8 17:53:12 2022...

@@ -1,0 +1,8 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd,1641530208,vhdl,,,,regfile,,,,,,,,
+C:/Users/nccas/VivadoWorkspace/gba/src/z80.vhd,1641529276,vhdl,C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd;C:/Users/nccas/VivadoWorkspace/gba/test/regfile_tb.vhd,,,z80,,,,,,,,
+C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd,1641529130,vhdl,C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd;C:/Users/nccas/VivadoWorkspace/gba/src/z80.vhd;C:/Users/nccas/VivadoWorkspace/gba/test/regfile_tb.vhd,,,z80_inst,,,,,,,,
+C:/Users/nccas/VivadoWorkspace/gba/test/regfile_tb.vhd,1641657727,vhdl,,,,regfile_tb,,,,,,,,
