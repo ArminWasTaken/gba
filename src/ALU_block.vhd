@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity ALU_block is
     Port ( clk : in STD_LOGIC;
-           control : in alublock_ctrl;
+           control : in alublock_ctrl_t;
            data_in : in std_logic_vector(7 downto 0);
            data_out : out std_logic_vector(7 downto 0) );
 end ALU_block;
@@ -44,7 +44,7 @@ architecture Behavioral of ALU_block is
         b : in signed (7 downto 0);
         a_16b : in signed (15 downto 0);
         b_16b : in signed (15 downto 0);
-        control : in alublock_ctrl;
+        control : in alublock_ctrl_t;
         flags_in : in STD_LOGIC_VECTOR (7 downto 0);
         flags_out : out STD_LOGIC_VECTOR (7 downto 0);
         output : out STD_LOGIC_VECTOR (7 downto 0);

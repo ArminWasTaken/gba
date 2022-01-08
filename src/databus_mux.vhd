@@ -35,7 +35,7 @@ use WORK.z80_inst.ALL;
 --use UNISIM.VComponents.all;
 
 entity databus_mux is
-    Port ( control: in internal_ctrl;
+    Port ( control: in internal_ctrl_t;
            reg_data: in std_logic_vector(7 downto 0);
            alu_data: in std_logic_vector(7 downto 0);
            mem_data: in std_logic_vector(7 downto 0);

@@ -30,13 +30,13 @@ entity control is
     Port( clk : in std_logic;
           n_reset : in std_logic;
           data : in std_logic_vector(7 downto 0);
-          sys_ctrl : out sys_ctrl;
-          cpu_ctrl : in cpu_ctrl;
+          sys_ctrl : out sys_ctrl_t;
+          cpu_ctrl : in cpu_ctrl_t;
           n_halt : out std_logic;
           n_busrq : in std_logic;
           n_busack : out std_logic;
-          regfile_ctrl : out internal_ctrl;
-          alu_ctrl : out internal_ctrl);
+          regfile_ctrl : out reg_ctrl_t;
+          alu_ctrl : out alublock_ctrl_t);
 end control;
 
 architecture Behavioral of control is

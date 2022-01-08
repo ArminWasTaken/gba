@@ -31,7 +31,7 @@ entity ALU is
            b : in signed (7 downto 0);
            a_16b : in signed (15 downto 0);
            b_16b : in signed (15 downto 0);
-           control : in alublock_ctrl;
+           control : in alublock_ctrl_t;
            flags_in : in STD_LOGIC_VECTOR (7 downto 0); -- Only 4 flags used -> Z C N H
            flags_out : out STD_LOGIC_VECTOR (7 downto 0);
            output : out STD_LOGIC_VECTOR (7 downto 0);

@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity regfile is
     Port ( clk : in STD_LOGIC;
-           control : in reg_ctrl;
+           control : in reg_ctrl_t;
            data_in : in std_logic_vector(7 downto 0);
            data_out : out std_logic_vector(7 downto 0);
            addr_out : out std_logic_vector(15 downto 0) );
