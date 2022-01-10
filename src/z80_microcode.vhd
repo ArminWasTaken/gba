@@ -57,7 +57,7 @@ package z80_microcode is
     constant microcode_reg_lut: microcode_reg_t :=(
         REG => (
             IMPLIED => (
-                ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => NONE),
+                ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC),
                         m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE),
                         m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE),  
                         m2t1   => (en => '0', din => NONE, dout => NONE, addr => NONE), 

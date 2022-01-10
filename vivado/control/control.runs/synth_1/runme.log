@@ -1,0 +1,40 @@
+
+*** Running vivado
+    with args -log cpu.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source cpu.tcl -notrace
+Command: synth_design -top cpu -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 12852 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 466.930 ; gain = 100.520
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-2048] function control_mem_ol does not always return a value [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:263]
+WARNING: [Synth 8-2048] function control_mux_ol does not always return a value [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:273]
+INFO: [Synth 8-638] synthesizing module 'cpu' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:43]
+INFO: [Synth 8-3491] module 'control' declared at 'C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:30' bound to instance 'CONTROL1' of component 'control' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:105]
+INFO: [Synth 8-638] synthesizing module 'control' [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:44]
+ERROR: [Synth 8-421] mismatched array sizes in rhs and lhs of assignment [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:40]
+ERROR: [Synth 8-428] missing elements in aggregate or subelement association [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:39]
+ERROR: [Synth 8-421] mismatched array sizes in rhs and lhs of assignment [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:39]
+ERROR: [Synth 8-421] mismatched array sizes in rhs and lhs of assignment [C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd:39]
+ERROR: [Synth 8-285] failed synthesizing module 'control' [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:44]
+ERROR: [Synth 8-285] failed synthesizing module 'cpu' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:43]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 521.250 ; gain = 154.840
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+5 Infos, 2 Warnings, 0 Critical Warnings and 7 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Mon Jan 10 21:35:52 2022...

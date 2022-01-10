@@ -29,7 +29,7 @@ use WORK.z80_microcode.ALL;
 
 entity control is
     Port( clk : in std_logic;
-          n_reset : in std_logic;
+          rst : in std_logic;
           data : in std_logic_vector(7 downto 0);
           regfile_ctrl : out reg_ctrl_t;
           alu_ctrl : out alublock_ctrl_t;
@@ -50,9 +50,9 @@ begin
 
     ---
     -- State register
-    sr: process (clk, n_reset)
+    sr: process (clk, rst)
     begin
-        if n_reset = '0' then
+        if rst = '0' then
             state_reg <= m1t1;
         elsif rising_edge(clk) then
             state_reg <= state_next;
@@ -60,9 +60,9 @@ begin
     end process;
     
     -- Datapath register
-    dpr: process (clk, n_reset)
+    dpr: process (clk, rst)
     begin
-        if n_reset = '0' then
+        if rst = '0' then
             inst_reg <= (inst_type => NOP, 
                          orig_8b => NONE, 
                          dest_8b => NONE, 
