@@ -34,6 +34,7 @@ entity control is
           regfile_ctrl : out reg_ctrl_t;
           alu_ctrl : out alublock_ctrl_t;
           mem_ctrl : out mem_ctrl_t;
+          mux_ctrl : out mux_ctrl_t;
           sys_ctrl : out sys_ctrl_t;
           cpu_ctrl : in cpu_ctrl_t;
           n_halt : out std_logic;
@@ -83,7 +84,7 @@ begin
     end process;
     
     -- Datapath logic
-    dpl: process (data, state_reg)
+    dpl: process (data, state_reg, inst_reg)
     begin
         if state_reg = m1t2 then
             inst_next <= slv_to_inst(data);
@@ -98,6 +99,7 @@ begin
         regfile_ctrl <= control_reg_ol(state_reg, inst_reg);
         alu_ctrl <= control_alu_ol(state_reg, inst_reg);
         mem_ctrl <= control_mem_ol(state_reg, inst_reg);
+        mux_ctrl <= control_mux_ol(state_reg, inst_reg);
     end process;
     
 end Behavioral;

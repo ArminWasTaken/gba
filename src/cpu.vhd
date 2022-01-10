@@ -49,6 +49,7 @@ architecture Behavioral of cpu is
         regfile_ctrl : out reg_ctrl_t;
         alu_ctrl : out alublock_ctrl_t;
         mem_ctrl : out mem_ctrl_t;
+        mux_ctrl : out mux_ctrl_t;
         sys_ctrl : out sys_ctrl_t;
         cpu_ctrl : in cpu_ctrl_t;
         n_halt : out std_logic;
@@ -109,6 +110,7 @@ begin
             regfile_ctrl => regfile_ctrl_s,
             alu_ctrl => alu_ctrl_s,
             mem_ctrl => mem_ctrl_s,
+            mux_ctrl => mux_ctrl_s,
             sys_ctrl => sys_ctrl,
             cpu_ctrl => cpu_ctrl,
             n_halt => n_halt,

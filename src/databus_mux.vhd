@@ -47,7 +47,7 @@ architecture Behavioral of databus_mux is
 
 begin
 
-    process(control, reg_data, alu_data, mem_data)
+    process(control, reg_data, alu_data, mem_data, ext_data)
     begin
         
         case control is
