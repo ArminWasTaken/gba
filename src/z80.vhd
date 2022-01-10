@@ -65,11 +65,6 @@ package z80 is
         din_reg: reg8_t;
         dout_reg: reg8_t;
         addr_reg: reg16_t;
---        orig8b: reg8_t;
---        dest8b: reg8_t;
---        orig16b: reg16_t;
---        dest16b: reg16_t;
---        bustype: bus_t;
     end record;
     
     type alublock_ctrl_t is record
