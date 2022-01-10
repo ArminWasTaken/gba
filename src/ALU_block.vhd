@@ -45,7 +45,8 @@ architecture Behavioral of ALU_block is
         b : in signed (7 downto 0);
         a_16b : in signed (15 downto 0);
         b_16b : in signed (15 downto 0);
-        control : in alublock_ctrl_t;
+        alu_enable : in std_logic;
+        inst : in alu_inst_t;
         flags_in : in STD_LOGIC_VECTOR (7 downto 0);
         flags_out : out STD_LOGIC_VECTOR (7 downto 0);
         output : out STD_LOGIC_VECTOR (7 downto 0);
@@ -73,7 +74,8 @@ begin
             b => b_input,
             a_16b => a_16b_input,
             b_16b => b_16b_input,
-            control => control,
+            alu_enable => control.alu_enable,
+            inst => control.inst,
             flags_in => flags_input,
             flags_out => flags_output,
             output => alu_output);

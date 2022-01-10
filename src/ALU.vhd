@@ -31,7 +31,8 @@ entity ALU is
            b : in signed (7 downto 0);
            a_16b : in signed (15 downto 0);
            b_16b : in signed (15 downto 0);
-           control : in alublock_ctrl_t;
+           alu_enable : in std_logic;
+           inst : in alu_inst_t;
            flags_in : in STD_LOGIC_VECTOR (7 downto 0); -- Only 4 flags used -> Z C N H
            flags_out : out STD_LOGIC_VECTOR (7 downto 0);
            output : out STD_LOGIC_VECTOR (7 downto 0);
@@ -56,7 +57,7 @@ begin
     -- Operations
     process (
         -- Inputs
-        a, b, a_16b, b_16b, control, Z_in, C_in, N_in, H_in,
+        a, b, a_16b, b_16b, alu_enable, inst, Z_in, C_in, N_in, H_in,
         -- Outputs
         result, result_16b
     )
@@ -78,8 +79,8 @@ begin
         result <= (others=>'0');
         result_16b <= (others=>'0');
     
-        if control.alu_enable = '1' then
-            case control.inst is
+        if alu_enable = '1' then
+            case inst is
                 when ADD => 
                     result <= resize(a, result'length) + resize(b, result'length);
                     if(result = "000000000") then
