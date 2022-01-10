@@ -38,17 +38,19 @@ package z80_microcode is
 --    end record;
     
     type sequence_t is array (state_t) of state_t; 
-    type microcode_state_t is array (inst_type_t) of sequence_t; 
-    type microcode_dir_t is array (dir_t) of microcode_state_t;
-    constant microcode_state_lut_none: microcode_state_t :=(
-        ADD => (m1t1=>m1t2, m1t2=>m1t3)
-    );
+   
+    type microcode_dir_t is array (dir_t, dir_t, inst_type_t) of sequence_t;
     constant microcode_dir_lut: microcode_dir_t :=(
-        NONE => microcode_state_lut_none
+        REG => (
+            IMPLIED => (
+                ADD => (m1t1=>m1t2, m1t2=>m1t3, others => m1t1),
+                others => (others => m1t1)
+            ),
+            others => (others => (others => m1t1))
+        ),
+        others => (others => (others => (others => m1t1)))
     );
 
-    
-    
     function control_nsl (state : state_t; inst: inst_t) return state_t;
     function control_reg_ol (state: state_t; inst: inst_t) return reg_ctrl_t;
     function control_alu_ol (state: state_t; inst: inst_t) return alublock_ctrl_t;
@@ -59,29 +61,14 @@ end package;
 package body z80_microcode is
     
     function control_nsl (state : state_t; inst: inst_t) return state_t is
-        variable ns : state_t := m1t1;
+        variable ns : state_t;
+        variable sequence : sequence_t;
     begin
-        case state is
-            when m1t1 =>
-                ns := m1t2;
-            when m1t2 =>
-                ns := m1t3;
-            when m1t3 =>
-                ns := m1t4;
-            when m1t4 =>
-                ns := m2t1;
-            when others =>
-                case inst.inst_type is
-                    when ADD => 
-                        if inst.dir
-                            case state is 
-                                m2
-                                    
-                        ns :=
-                end case;
-        end case;
+    
+        sequence := microcode_dir_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
+        ns := sequence(state);
         
-        
+        return ns;
         
     end function;
     
