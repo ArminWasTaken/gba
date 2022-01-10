@@ -83,11 +83,13 @@ begin
     end process;
     
     -- Datapath logic
-    dpl: process (inst_reg)
+    dpl: process (data, state_reg)
     begin
---        case inst_reg.inst_type is
---            when others =>
---        end case;
+        if state_reg = m1t2 then
+            inst_next <= slv_to_inst(data);
+        else
+            inst_next <= inst_reg;
+        end if;
     end process;
 
     -- Output logic

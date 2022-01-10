@@ -60,7 +60,6 @@ package z80 is
     end record;
     
     type reg_ctrl_t is record
-        rst: std_logic;
         reg_enable: std_logic;
         din_reg: reg8_t;
         dout_reg: reg8_t;
@@ -68,7 +67,6 @@ package z80 is
     end record;
     
     type alublock_ctrl_t is record
-        rst: std_logic;
         reg_enable: std_logic;
         alu_enable: std_logic;
         inst: alu_inst_t;
@@ -77,7 +75,6 @@ package z80 is
     end record;
     
     type mem_ctrl_t is record
-        rsta: std_logic;
         ena: std_logic;
         wea: std_logic_vector(0 downto 0);
     end record;

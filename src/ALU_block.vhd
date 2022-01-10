@@ -32,6 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity ALU_block is
     Port ( clk : in STD_LOGIC;
+           rst : in std_logic;
            control : in alublock_ctrl_t;
            data_in : in std_logic_vector(7 downto 0);
            data_out : out std_logic_vector(7 downto 0) );
@@ -78,9 +79,9 @@ begin
             output => alu_output);
     
     -- ALU Registers
-    alu_r: process(clk, control.rst) 
+    alu_r: process(clk, rst) 
     begin
-        if(control.rst = '1') then
+        if(rst = '1') then
             -- 8 bit reg
             A_reg <= (others => '0');
             F_reg <= (others => '0');
