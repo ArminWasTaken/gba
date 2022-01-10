@@ -45,7 +45,7 @@ package z80_microcode is
     );
     
     -- Regfile sequence
-    type mux_seq_t is (none, dest8, dest16, dest16low, dest16high, orig8, orig16, orig16low, orig16high);
+    type mux_seq_t is (none, PC, dest8, dest16, dest16low, dest16high, orig8, orig16, orig16low, orig16high);
     type reg_mux_t is record
         en: std_logic;
         din: mux_seq_t;
@@ -57,7 +57,9 @@ package z80_microcode is
     constant microcode_reg_lut: microcode_reg_t :=(
         REG => (
             IMPLIED => (
-                ADD => (m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE),  
+                ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => NONE),
+                        m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE),
+                        m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE),  
                         m2t1   => (en => '0', din => NONE, dout => NONE, addr => NONE), 
                         others => (en => '0', din => NONE, dout => NONE, addr => NONE))
             )
@@ -70,10 +72,8 @@ package z80_microcode is
     constant microcode_alu_lut: microcode_alu_t :=(
         REG => (
             IMPLIED => (
-                ADD => (m1t1 =>   (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE), 
-                        m1t2 =>   (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE), 
-                        m1t3 =>   (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE),  
-                        m2t1 =>   (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE), 
+                ADD => (m1t3 =>   (reg_enable => '1', alu_enable => '0', inst => ADD, din_alu => TEMP, dout_alu => NONE),  
+                        m2t1 =>   (reg_enable => '0', alu_enable => '1', inst => ADD, din_alu => NONE, dout_alu => ALU_OUT), 
                         others => (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE))
             )
         )
@@ -86,7 +86,7 @@ package z80_microcode is
         REG => (
             IMPLIED => (
                 ADD => (m1t1 => (ena => '1', wea => "0"), 
-                        m1t2 => (ena => '1', wea => "0"), 
+                        m1t2 => (ena => '0', wea => "0"), 
                         m1t3 => (ena => '0', wea => "0"),  
                         m2t1 => (ena => '0', wea => "0"), 
                         others => (ena => '0', wea => "0"))
@@ -100,13 +100,13 @@ package z80_microcode is
     constant microcode_mux_lut: microcode_mux_t :=(
         REG => (
             IMPLIED => (
-                ADD => (m1t1 => MEM, m1t2 => MEM, m1t3 => MEM, m2t1 => MEM, others => MEM)
+                ADD => (m1t1 => MEM, m1t2 => REG, m1t3 => ALU, m2t1 => ALU, others => MEM)
             )
         )
     );
 
     function get_reg_low    (regpair: reg16_t) return reg8_t;
-    function get_reg_high   (regpair: reg16_t) return state_t;
+    function get_reg_high   (regpair: reg16_t) return reg8_t;
     
     function control_nsl    (state: state_t; inst: inst_t) return state_t;
     function control_reg_ol (state: state_t; inst: inst_t) return reg_ctrl_t;
@@ -200,6 +200,8 @@ package body z80_microcode is
         sequence := microcode_reg_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
         reg_mux := sequence(state);
         
+        reg_ctrl.reg_enable := reg_mux.en;
+        
         -- Databus -> reg
         case reg_mux.din is
             when dest8 =>
@@ -228,6 +230,8 @@ package body z80_microcode is
                 reg_ctrl.addr_reg := inst.dest_16b;
             when orig16 =>
                 reg_ctrl.addr_reg := inst.orig_16b;
+            when PC =>
+                reg_ctrl.addr_reg := PC;
             when others =>
                 reg_ctrl.addr_reg := NONE;
         end case;
@@ -242,6 +246,9 @@ package body z80_microcode is
     begin
         
         sequence := microcode_alu_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
+        alu_ctrl := sequence(state);
+        
+        return alu_ctrl;
         
     end function;
     
@@ -251,6 +258,7 @@ package body z80_microcode is
     begin
         
         sequence := microcode_mem_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
+        mem_ctrl := sequence(state);
         
     end function;
     
@@ -260,6 +268,7 @@ package body z80_microcode is
     begin
         
         sequence := microcode_mux_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
+        mux_ctrl := sequence(state);
         
     end function;
     

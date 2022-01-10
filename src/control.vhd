@@ -95,9 +95,9 @@ begin
     -- Output logic
     ol: process (state_reg, inst_reg)
     begin 
-        regfile_control <= control_reg_ol(state_reg, inst_reg);
-        alu_control <= control_alu_ol(state_reg, inst_reg);
-        mem_control <= control_mem_ol(state_reg, inst_reg);
+        regfile_ctrl <= control_reg_ol(state_reg, inst_reg);
+        alu_ctrl <= control_alu_ol(state_reg, inst_reg);
+        mem_ctrl <= control_mem_ol(state_reg, inst_reg);
     end process;
     
 end Behavioral;
