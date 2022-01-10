@@ -83,12 +83,13 @@ package z80_inst is
     
     type inst_t is record
         inst_type: inst_type_t;
+        orig_dir: dir_t;
+        dest_dir: dir_t;
+        
         orig_8b: reg8_t;
         dest_8b: reg8_t;
         orig_16b: reg16_t;
         dest_16b: reg16_t;
-        orig_dir: dir_t;
-        dest_dir: dir_t;
         cond: condition_t;
     end record;
     

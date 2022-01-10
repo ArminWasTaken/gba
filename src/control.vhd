@@ -25,6 +25,7 @@ use IEEE.NUMERIC_STD.ALL;
 library WORK;
 use WORK.z80.ALL;
 use WORK.z80_inst.ALL;
+use WORK.z80_microcode.ALL;
 
 entity control is
     Port( clk : in std_logic;
@@ -41,10 +42,6 @@ entity control is
 end control;
 
 architecture Behavioral of control is
-
-    type state_t is (m1t1, m1t2, m1t3, m1t4, m1t5, m1t6,
-                     m2t1, m2t2, m2t3,
-                     m3t1, m3t2, m3t3);
     
     signal state_next, state_reg : state_t;
     signal inst_next, inst_reg : inst_t; 
@@ -80,19 +77,9 @@ begin
     end process;
 
     -- Next state logic
-    nsl: process (state_reg)
+    nsl: process (state_reg, inst_reg)
     begin
-        case state_reg is
-            when m1t1 => 
-                state_next <= m1t2;
-            when m1t2 => 
-                state_next <= m1t3;
-            when m1t3 => 
-                state_next <= m1t4;
-            when m1t4 =>
-            --depende de la instrucción
-            when others =>
-        end case;
+        state_next <= control_nsl(state_reg, inst_reg);
     end process;
     
     -- Datapath logic
@@ -106,14 +93,9 @@ begin
     -- Output logic
     ol: process (state_reg, inst_reg)
     begin 
-        case state_reg is 
-            when m1t1 =>
-                -- case instr is... cosas
-                -- Addr_bus <= PC
-                -- n_mreq <= '1';
-                -- n_rd <= '1';
-                -- n_m1 <= '0';
-        end case;
+        regfile_control <= control_reg_ol(state_reg, inst_reg);
+        alu_control <= control_alu_ol(state_reg, inst_reg);
+        mem_control <= control_mem_ol(state_reg, inst_reg);
     end process;
     
 end Behavioral;
