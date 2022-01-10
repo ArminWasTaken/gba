@@ -45,7 +45,7 @@ package z80_microcode is
     );
     
     -- Regfile sequence
-    type mux_seq_t is (none, dest8, dest16low, dest16high, orig8, orig16low, orig16high);
+    type mux_seq_t is (none, dest8, dest16, dest16low, dest16high, orig8, orig16, orig16low, orig16high);
     type reg_mux_t is record
         en: std_logic;
         din: mux_seq_t;
@@ -105,6 +105,9 @@ package z80_microcode is
         )
     );
 
+    function get_reg_low    (regpair: reg16_t) return reg8_t;
+    function get_reg_high   (regpair: reg16_t) return state_t;
+    
     function control_nsl    (state: state_t; inst: inst_t) return state_t;
     function control_reg_ol (state: state_t; inst: inst_t) return reg_ctrl_t;
     function control_alu_ol (state: state_t; inst: inst_t) return alublock_ctrl_t;
@@ -114,6 +117,60 @@ package z80_microcode is
 end package;
 
 package body z80_microcode is
+    
+    function get_reg_low (regpair: reg16_t) return reg8_t is
+        variable regpair_low : reg8_t;
+    begin
+        
+        case regpair is 
+            when BC =>
+                regpair_low := C;
+            when DE =>
+                regpair_low := E;
+            when HL =>
+                regpair_low := L;
+            when SP =>
+                regpair_low := SP_L;
+            when PC =>
+                regpair_low := PC_L;
+            when AF =>
+                regpair_low := F;
+            when IX =>
+                regpair_low := IX_L;
+            when IY =>
+                regpair_low := IY_L;
+        end case;
+        
+        return regpair_low;
+        
+    end function;
+    
+    function get_reg_high (regpair: reg16_t) return reg8_t is
+        variable regpair_high : reg8_t;
+    begin
+        
+        case regpair is 
+            when BC =>
+                regpair_high := B;
+            when DE =>
+                regpair_high := D;
+            when HL =>
+                regpair_high := H;
+            when SP =>
+                regpair_high := SP_H;
+            when PC =>
+                regpair_high := PC_H;
+            when AF =>
+                regpair_high := A;
+            when IX =>
+                regpair_high := IX_H;
+            when IY =>
+                regpair_high := IY_H;
+        end case;
+        
+        return regpair_high;
+        
+    end function;
     
     function control_nsl (state : state_t; inst: inst_t) return state_t is
         variable ns : state_t;
@@ -148,17 +205,35 @@ package body z80_microcode is
             when dest8 =>
                 reg_ctrl.din_reg := inst.dest_8b;
             when dest16low =>
-                reg_ctrl.din_reg := get_reg_low(inst.dest_16b);          
+                reg_ctrl.din_reg := get_reg_low(inst.dest_16b);
+            when dest16high =>
+                reg_ctrl.din_reg := get_reg_high(inst.dest_16b);
+            when others =>
+                reg_ctrl.din_reg := NONE;
         end case;
-                
-                
-                
-                
---        -- 8 bits o 16 -> secuenciar
---        reg_ctrl.dout_reg := inst.orig_8b;
---        -- Origen o destino a addr limitado a 16 bits
---        reg_ctrl.addr_reg := inst.orig_16b;
-
+        
+        case reg_mux.dout is
+            when orig8 =>
+                reg_ctrl.dout_reg := inst.orig_8b;
+            when orig16low =>
+                reg_ctrl.dout_reg := get_reg_low(inst.orig_16b);
+            when orig16high =>
+                reg_ctrl.dout_reg := get_reg_high(inst.orig_16b);
+            when others =>
+                reg_ctrl.dout_reg := NONE;
+        end case;
+        
+        case reg_mux.addr is
+            when dest16 =>
+                reg_ctrl.addr_reg := inst.dest_16b;
+            when orig16 =>
+                reg_ctrl.addr_reg := inst.orig_16b;
+            when others =>
+                reg_ctrl.addr_reg := NONE;
+        end case;
+        
+        return reg_ctrl;
+        
     end function;
     
     function control_alu_ol (state : state_t; inst: inst_t) return alublock_ctrl_t is
