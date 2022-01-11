@@ -1,3 +1,6 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd" into library xil_defaultlib
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd" into library xil_defaultlib
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'control'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'regfile'

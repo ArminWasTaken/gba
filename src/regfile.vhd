@@ -79,9 +79,19 @@ begin
         -- Default operation
         regfile_next <= regfile_reg;
         SP_next <= SP_reg; -- Maybe missing mux + (+-1)
-        PC_next <= PC_reg; -- Maybe missing mux + (+-1)
         IX_next <= IX_reg;
         IY_next <= IY_reg;
+        
+        case control.PC_ctrl is
+            when NONE =>
+                PC_next <= PC_reg;
+            when INC =>
+                PC_next <= std_logic_vector(unsigned(PC_reg) + 1);
+            when DEC =>
+                PC_next <= std_logic_vector(unsigned(PC_reg) - 1);
+            when others =>
+                PC_next <= PC_reg;
+        end case;
         
         if control.reg_enable = '1' then    -- Data from databus only gets INTO the registers if reg_enable = '1' 
             case control.din_reg is

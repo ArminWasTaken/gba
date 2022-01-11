@@ -59,7 +59,6 @@ architecture Behavioral of cpu is
     
     component blk_mem_gen_0 port(
         clka : IN STD_LOGIC;
-        rsta : IN STD_LOGIC;
         ena : IN STD_LOGIC;
         wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
         addra : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
@@ -137,7 +136,6 @@ begin
             
     MEM: blk_mem_gen_0 port map(
             clka => clk,
-            rsta => rst,
             ena => mem_ctrl_s.ena,
             wea => mem_ctrl_s.wea,
             addra => addrbus_s(10 downto 0),

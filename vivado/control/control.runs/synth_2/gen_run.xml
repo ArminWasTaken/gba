@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_2" LaunchPart="xc7a100tcsg324-1" LaunchTime="1641858491">
+<GenRun Id="synth_2" LaunchPart="xc7a100tcsg324-1" LaunchTime="1641866161">
   <File Type="PA-TCL" Name="cpu.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="cpu_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="cpu_reports.tcl"/>
   <File Type="RDS-RDS" Name="cpu.vds"/>
   <File Type="RDS-UTIL" Name="cpu_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="cpu_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="cpu.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="cpu_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="cpu_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../../src/z80_inst.vhd">

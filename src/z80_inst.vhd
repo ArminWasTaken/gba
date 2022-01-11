@@ -18,7 +18,6 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -111,6 +110,10 @@ package z80_inst is
     type mux_ctrl_t is (
         REG, ALU, MEM, EXT
         );
+        
+    type pc_ctrl_t is (
+        NONE, INC, DEC
+        );
                   
     type sys_ctrl_t is record
         n_m1: std_logic;
@@ -132,6 +135,7 @@ package z80_inst is
         din_reg: reg8_t;
         dout_reg: reg8_t;
         addr_reg: reg16_t;
+        PC_ctrl: PC_ctrl_t;
     end record;
     
     type alublock_ctrl_t is record

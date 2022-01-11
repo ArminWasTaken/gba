@@ -69,39 +69,40 @@ package z80_microcode is
         din: mux_seq_t;
         dout: mux_seq_t;
         addr: mux_seq_t;
+        pc_ctrl: pc_ctrl_t;
     end record;
     type reg_ctrl_sequence_t is array (state_t) of reg_mux_t; 
     type microcode_reg_t is array (dir_t, dir_t, inst_type_t) of reg_ctrl_sequence_t;
     constant microcode_reg_lut: microcode_reg_t :=(
         NONE => (
             NONE => (
-                NOP => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC),
-                        m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE),
-                        m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE),  
-                        m1t4   => (en => '0', din => NONE, dout => NONE, addr => NONE), 
-                        others => (en => '0', din => NONE, dout => NONE, addr => NONE)),
-                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
+                NOP => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC, pc_ctrl => NONE),
+                        m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE),
+                        m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE),  
+                        m1t4   => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE), 
+                        others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => INC)),
+                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE))
             ),
             others => (
-                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
+                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE))
             )
         ),
         REG => (
             IMPLIED => (
-                ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC),
-                        m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE),
-                        m1t3   => (en => '0', din => NONE, dout => orig8, addr => NONE),  
-                        m2t1   => (en => '0', din => NONE, dout => NONE, addr => NONE), 
-                        others => (en => '0', din => NONE, dout => NONE, addr => NONE)),
-                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
+                ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC, pc_ctrl => NONE),
+                        m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE),
+                        m1t3   => (en => '0', din => NONE, dout => orig8, addr => NONE, pc_ctrl => NONE),  
+                        m2t1   => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => INC), 
+                        others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE)),
+                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE))
             ),
             others => (
-                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
+                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE))
             )
         ),
         others => (
             others => (
-                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
+                others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE, pc_ctrl => NONE))
             )
         )
     );
@@ -309,6 +310,7 @@ package body z80_microcode is
         reg_mux := sequence(state);
         
         reg_ctrl.reg_enable := reg_mux.en;
+        reg_ctrl.pc_ctrl := reg_mux.pc_ctrl;
         
         -- Databus -> reg
         case reg_mux.din is
@@ -343,6 +345,8 @@ package body z80_microcode is
             when others =>
                 reg_ctrl.addr_reg := NONE;
         end case;
+        
+        
         
         return reg_ctrl;
         

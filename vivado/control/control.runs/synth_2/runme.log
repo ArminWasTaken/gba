@@ -2,6 +2,7 @@
 *** Running vivado
     with args -log cpu.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source cpu.tcl
 
+ERROR: [Common 17-222] Fail to create message file vivado.pb. Please check permission of the directory.
 
 ****** Vivado v2018.3 (64-bit)
   **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
@@ -14,15 +15,22 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 2560 
+INFO: Helper process launched with PID 12732 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 467.309 ; gain = 100.801
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 467.555 ; gain = 100.863
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'cpu' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:43]
 INFO: [Synth 8-3491] module 'control' declared at 'C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:30' bound to instance 'CONTROL1' of component 'control' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:106]
 INFO: [Synth 8-638] synthesizing module 'control' [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:45]
-INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:521]
-WARNING: [Synth 8-6014] Unused sequential element inst_reg_reg[orig_8b] was removed.  [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:67]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:167]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:169]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:248]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:300]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:406]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:564]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:587]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:650]
+INFO: [Synth 8-226] default block is never used [C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd:763]
 WARNING: [Synth 8-6014] Unused sequential element inst_reg_reg[dest_8b] was removed.  [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:67]
 WARNING: [Synth 8-6014] Unused sequential element inst_reg_reg[cond] was removed.  [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:67]
 WARNING: [Synth 8-3848] Net sys_ctrl[n_m1] in module/entity control does not have driver. [C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd:38]
@@ -45,8 +53,8 @@ INFO: [Synth 8-256] done synthesizing module 'ALU' (3#1) [C:/Users/nccas/VivadoW
 WARNING: [Synth 8-6014] Unused sequential element A2_reg_reg was removed.  [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:94]
 WARNING: [Synth 8-6014] Unused sequential element F2_reg_reg was removed.  [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:95]
 INFO: [Synth 8-256] done synthesizing module 'ALU_block' (4#1) [C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd:42]
-INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/.Xil/Vivado-15652-DESKTOP-NPP0168/realtime/blk_mem_gen_0_stub.vhdl:5' bound to instance 'MEM' of component 'blk_mem_gen_0' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:138]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/.Xil/Vivado-15652-DESKTOP-NPP0168/realtime/blk_mem_gen_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/.Xil/Vivado-3568-DESKTOP-NPP0168/realtime/blk_mem_gen_0_stub.vhdl:5' bound to instance 'MEM' of component 'blk_mem_gen_0' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:138]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/.Xil/Vivado-3568-DESKTOP-NPP0168/realtime/blk_mem_gen_0_stub.vhdl:18]
 INFO: [Synth 8-3491] module 'databus_mux' declared at 'C:/Users/nccas/VivadoWorkspace/gba/src/databus_mux.vhd:37' bound to instance 'DATA_MUX' of component 'databus_mux' [C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd:148]
 INFO: [Synth 8-638] synthesizing module 'databus_mux' [C:/Users/nccas/VivadoWorkspace/gba/src/databus_mux.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'databus_mux' (5#1) [C:/Users/nccas/VivadoWorkspace/gba/src/databus_mux.vhd:46]
@@ -68,7 +76,7 @@ WARNING: [Synth 8-3331] design control has unconnected port cpu_ctrl[n_int]
 WARNING: [Synth 8-3331] design control has unconnected port cpu_ctrl[n_nmi]
 WARNING: [Synth 8-3331] design control has unconnected port n_busrq
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished RTL Elaboration : Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -81,10 +89,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -95,34 +103,40 @@ Parsing XDC File [c:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs
 Finished Parsing XDC File [c:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'MEM'
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1989.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2095.641 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1989.633 ; gain = 0.000
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1989.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2095.641 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 2095.641 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Constraint Validation : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for MEM. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg_reg' in module 'control'
 INFO: [Synth 8-5544] ROM "inst[inst_type]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "inst[orig_dir]" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "inst_next[inst_type]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "microcode_state_lut[0,8,0][2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_reg_lut[0,8,0][0][addr]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_reg_lut[0,0,47][0][addr]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_alu_lut[0,8,0][1][inst]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_state_lut[0,0,47][1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_reg_lut[0,8,0][2][dout]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "microcode_state_lut[0,0,47][2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd:72]
 INFO: [Synth 8-5546] ROM "IX_next" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "IY_next" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "SP_next" won't be mapped to RAM because it is too sparse
@@ -135,14 +149,15 @@ INFO: [Synth 8-5544] ROM "temp_next" won't be mapped to Block RAM because addres
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
-                 iSTATE5 |                               00 |                             0000
-                 iSTATE4 |                               01 |                             0001
-                 iSTATE1 |                               10 |                             0010
-                 iSTATE8 |                               11 |                             0110
+                 iSTATE5 |                            00001 |                             0000
+                 iSTATE4 |                            00010 |                             0001
+                 iSTATE1 |                            00100 |                             0010
+                 iSTATE9 |                            01000 |                             0110
+                  iSTATE |                            10000 |                             0011
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_reg' using encoding 'sequential' in module 'control'
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg_reg' using encoding 'one-hot' in module 'control'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -163,13 +178,16 @@ Detailed RTL Component Info :
 	   2 Input      9 Bit         XORs := 1     
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               16 Bit    Registers := 3     
+	               16 Bit    Registers := 4     
 	                8 Bit    Registers := 10    
 	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 4     
 +---Muxes : 
 	  28 Input     17 Bit        Muxes := 2     
 	  11 Input     16 Bit        Muxes := 3     
+	  10 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
 	   8 Input     16 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 2     
 	   4 Input      8 Bit        Muxes := 2     
@@ -181,33 +199,37 @@ Detailed RTL Component Info :
 	   8 Input      6 Bit        Muxes := 1     
 	   3 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
+	   5 Input      5 Bit        Muxes := 1     
+	  72 Input      5 Bit        Muxes := 3     
+	  11 Input      5 Bit        Muxes := 12    
+	   4 Input      5 Bit        Muxes := 1     
 	   5 Input      4 Bit        Muxes := 2     
-	   4 Input      4 Bit        Muxes := 5     
-	   2 Input      4 Bit        Muxes := 5     
-	  15 Input      4 Bit        Muxes := 2     
-	   8 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 6     
+	   2 Input      4 Bit        Muxes := 7     
+	  15 Input      4 Bit        Muxes := 3     
+	   8 Input      4 Bit        Muxes := 4     
+	  18 Input      4 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 6     
 	   8 Input      3 Bit        Muxes := 5     
-	  21 Input      3 Bit        Muxes := 1     
-	  72 Input      3 Bit        Muxes := 1     
-	   4 Input      3 Bit        Muxes := 8     
-	   5 Input      3 Bit        Muxes := 1     
+	  21 Input      3 Bit        Muxes := 2     
+	  72 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 3     
+	   4 Input      3 Bit        Muxes := 7     
 	  15 Input      3 Bit        Muxes := 1     
 	  21 Input      2 Bit        Muxes := 3     
-	  72 Input      2 Bit        Muxes := 3     
-	   4 Input      2 Bit        Muxes := 7     
-	   6 Input      2 Bit        Muxes := 1     
-	  11 Input      2 Bit        Muxes := 2     
+	  72 Input      2 Bit        Muxes := 2     
+	   5 Input      2 Bit        Muxes := 4     
 	   8 Input      2 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 4     
 	  28 Input      2 Bit        Muxes := 2     
-	  21 Input      1 Bit        Muxes := 1     
-	  72 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 7     
-	   2 Input      1 Bit        Muxes := 9     
+	  21 Input      1 Bit        Muxes := 6     
+	  72 Input      1 Bit        Muxes := 4     
+	   5 Input      1 Bit        Muxes := 4     
 	  11 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 5     
 	  28 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 8     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -219,6 +241,7 @@ Module control
 Detailed RTL Component Info : 
 +---Registers : 
 	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
 	                4 Bit    Registers := 4     
 +---Muxes : 
 	   8 Input      7 Bit        Muxes := 1     
@@ -229,43 +252,48 @@ Detailed RTL Component Info :
 	   8 Input      6 Bit        Muxes := 1     
 	   3 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
+	   5 Input      5 Bit        Muxes := 1     
+	  72 Input      5 Bit        Muxes := 3     
+	  11 Input      5 Bit        Muxes := 12    
+	   4 Input      5 Bit        Muxes := 1     
 	   5 Input      4 Bit        Muxes := 2     
-	   4 Input      4 Bit        Muxes := 5     
-	   2 Input      4 Bit        Muxes := 5     
-	  15 Input      4 Bit        Muxes := 2     
-	   8 Input      4 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 6     
+	   2 Input      4 Bit        Muxes := 7     
+	  15 Input      4 Bit        Muxes := 3     
+	   8 Input      4 Bit        Muxes := 4     
+	  18 Input      4 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 6     
 	   8 Input      3 Bit        Muxes := 4     
-	  21 Input      3 Bit        Muxes := 1     
-	  72 Input      3 Bit        Muxes := 1     
-	   4 Input      3 Bit        Muxes := 8     
-	   5 Input      3 Bit        Muxes := 1     
+	  21 Input      3 Bit        Muxes := 2     
+	  72 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 3     
+	   4 Input      3 Bit        Muxes := 7     
 	  15 Input      3 Bit        Muxes := 1     
 	  21 Input      2 Bit        Muxes := 3     
-	  72 Input      2 Bit        Muxes := 3     
-	   4 Input      2 Bit        Muxes := 7     
-	   6 Input      2 Bit        Muxes := 1     
-	  11 Input      2 Bit        Muxes := 2     
+	  72 Input      2 Bit        Muxes := 2     
+	   5 Input      2 Bit        Muxes := 4     
 	   8 Input      2 Bit        Muxes := 1     
-	   5 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
-	  21 Input      1 Bit        Muxes := 1     
-	  72 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 3     
-	   2 Input      1 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 4     
+	  21 Input      1 Bit        Muxes := 6     
+	  72 Input      1 Bit        Muxes := 4     
+	   5 Input      1 Bit        Muxes := 4     
 Module regfile 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     16 Bit       Adders := 1     
 +---Registers : 
-	               16 Bit    Registers := 3     
+	               16 Bit    Registers := 4     
 	                8 Bit    Registers := 6     
 +---Muxes : 
 	  11 Input     16 Bit        Muxes := 3     
+	  10 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
 	   8 Input     16 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 1     
 	   8 Input      3 Bit        Muxes := 1     
 	  11 Input      1 Bit        Muxes := 6     
+	   4 Input      1 Bit        Muxes := 1     
 Module ALU 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -324,50 +352,100 @@ WARNING: [Synth 8-3331] design cpu has unconnected port cpu_ctrl[n_wait]
 WARNING: [Synth 8-3331] design cpu has unconnected port cpu_ctrl[n_int]
 WARNING: [Synth 8-3331] design cpu has unconnected port cpu_ctrl[n_nmi]
 WARNING: [Synth 8-3331] design cpu has unconnected port n_busrq
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ALUblock/A_reg_reg[0] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ALUblock/A_reg_reg[1] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ALUblock/A_reg_reg[2] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\ALUblock/A_reg_reg[3] )
-INFO: [Synth 8-3886] merging instance 'ALUblock/F_reg_reg[4]' (FDCE) to 'ALUblock/F_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[4]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[12]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[12]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[4]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[12]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[4]' (FDCE) to 'ALUblock/A_reg_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\ALUblock/A_reg_reg[4] )
-INFO: [Synth 8-3886] merging instance 'ALUblock/F_reg_reg[5]' (FDCE) to 'ALUblock/F_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[5]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[13]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[5]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[13]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[13]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[5]' (FDCE) to 'ALUblock/A_reg_reg[5]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\ALUblock/A_reg_reg[5] )
-INFO: [Synth 8-3886] merging instance 'ALUblock/F_reg_reg[6]' (FDCE) to 'ALUblock/F_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[6]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[14]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[14]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[6]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[14]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[6]' (FDCE) to 'ALUblock/A_reg_reg[6]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\ALUblock/A_reg_reg[6] )
-INFO: [Synth 8-3886] merging instance 'ALUblock/F_reg_reg[7]' (FDCE) to 'ALUblock/tempA_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[7]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[15]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[15]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[7]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[15]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[7]' (FDCE) to 'ALUblock/A_reg_reg[7]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\ALUblock/A_reg_reg[7] )
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[0]' (FDCE) to 'ALUblock/tempA_reg_reg[1]'
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[1]' (FDCE) to 'ALUblock/tempA_reg_reg[2]'
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[2]' (FDCE) to 'ALUblock/tempA_reg_reg[3]'
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[4]' (FDCE) to 'ALUblock/tempA_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[5]' (FDCE) to 'ALUblock/tempA_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'ALUblock/tempA_reg_reg[6]' (FDCE) to 'ALUblock/tempA_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][0]' (FDPE) to 'REGFILE1/regfile_reg_reg[4][0]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][0]' (FDPE) to 'REGFILE1/regfile_reg_reg[4][0]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][0]' (FDPE) to 'REGFILE1/regfile_reg_reg[2][0]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][0]' (FDPE) to 'REGFILE1/regfile_reg_reg[2][0]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][0]' (FDPE) to 'REGFILE1/regfile_reg_reg[1][0]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\REGFILE1/regfile_reg_reg[1][0] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[1]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[9]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][1]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[9]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[1]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[9]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[1]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][1]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][1]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][1]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][1]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][1]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][1] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[2]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[10]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][2]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[10]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[2]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[10]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[2]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][2]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][2]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][2]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][2]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][2]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][2] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[3]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[11]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[3]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[11]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][3]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[11]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[3]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][3]' (FDCE) to 'REGFILE1/regfile_reg_reg[3][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][3]' (FDCE) to 'REGFILE1/regfile_reg_reg[3][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][3]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][3]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][3]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][3] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[4]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[12]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][4]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[12]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[4]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[12]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[4]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][4]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][4]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][4]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][4]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][4]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][4] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[5]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[13]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[5]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[13]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][5]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[13]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[5]' (FDCE) to 'REGFILE1/regfile_reg_reg[5][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][5]' (FDCE) to 'REGFILE1/regfile_reg_reg[3][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][5]' (FDCE) to 'REGFILE1/regfile_reg_reg[3][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][5]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][5]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][5]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][5] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[6]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[14]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][6]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[14]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[6]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[14]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[6]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][6]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][6]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][6]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][6]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][6]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][6] )
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[7]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IX_reg_reg[15]' (FDCE) to 'REGFILE1/regfile_reg_reg[6][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[6][7]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[15]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/SP_reg_reg[7]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[15]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/IY_reg_reg[7]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[5][7]' (FDCE) to 'REGFILE1/regfile_reg_reg[4][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[4][7]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[3][7]' (FDCE) to 'REGFILE1/regfile_reg_reg[2][7]'
+INFO: [Synth 8-3886] merging instance 'REGFILE1/regfile_reg_reg[2][7]' (FDCE) to 'REGFILE1/regfile_reg_reg[1][7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REGFILE1/regfile_reg_reg[1][7] )
+INFO: [Synth 8-3886] merging instance 'CONTROL1/inst_reg_reg[orig_16b][3]' (FDCE) to 'CONTROL1/inst_reg_reg[orig_8b][4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\CONTROL1/inst_reg_reg[orig_8b][4] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -379,13 +457,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Timing Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -397,7 +475,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -421,7 +499,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -434,7 +512,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -446,25 +524,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -484,14 +562,14 @@ Report Cell Usage:
 |1     |blk_mem_gen_0_bbox_0 |     1|
 |2     |BUFG                 |     1|
 |3     |CARRY4               |     6|
-|4     |LUT1                 |     2|
-|5     |LUT2                 |    12|
-|6     |LUT3                 |    11|
-|7     |LUT4                 |    37|
-|8     |LUT5                 |    11|
-|9     |LUT6                 |    49|
-|10    |FDCE                 |    37|
-|11    |FDPE                 |     5|
+|4     |LUT1                 |     1|
+|5     |LUT2                 |    20|
+|6     |LUT3                 |    35|
+|7     |LUT4                 |    10|
+|8     |LUT5                 |    25|
+|9     |LUT6                 |    58|
+|10    |FDCE                 |    54|
+|11    |FDPE                 |    10|
 |12    |IBUF                 |    10|
 |13    |OBUF                 |    24|
 |14    |OBUFT                |     8|
@@ -501,34 +579,37 @@ Report Instance Areas:
 +------+-----------+----------+------+
 |      |Instance   |Module    |Cells |
 +------+-----------+----------+------+
-|1     |top        |          |   221|
-|2     |  ALUblock |ALU_block |    15|
-|3     |    ALU1   |ALU       |     4|
-|4     |  CONTROL1 |control   |   134|
+|1     |top        |          |   270|
+|2     |  ALUblock |ALU_block |    34|
+|3     |    ALU1   |ALU       |     2|
+|4     |  CONTROL1 |control   |   164|
 |5     |  REGFILE1 |regfile   |    21|
 +------+-----------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 12 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:38 . Memory (MB): peak = 1989.633 ; gain = 1623.125
-Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1989.633 ; gain = 1623.125
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:40 . Memory (MB): peak = 2095.641 ; gain = 1728.949
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2095.641 ; gain = 1728.949
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1989.633 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2095.641 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-90 Infos, 41 Warnings, 0 Critical Warnings and 0 Errors encountered.
+154 Infos, 40 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:45 . Memory (MB): peak = 1989.633 ; gain = 1634.617
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1989.633 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2095.641 ; gain = 1740.430
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2095.641 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/cpu.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file cpu_utilization_synth.rpt -pb cpu_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Jan 11 00:49:05 2022...
+ERROR: [Common 17-99] Failed to open zip archive C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.runs/synth_2/cpu.dcp.
+Resolution: Check that you have write permissions at the path specified, and sufficient free disk space.
+
+WARNING: [Runs 36-521] DcpWriter() - An error happened while creating the dcp. This dcp may be incomplete or malformed.
+ERROR: [Common 17-69] Command failed: Failed to create design checkpoint
+INFO: [Common 17-206] Exiting Vivado at Tue Jan 11 02:56:57 2022...
