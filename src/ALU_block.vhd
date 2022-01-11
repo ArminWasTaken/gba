@@ -21,7 +21,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library WORK;
-use WORK.z80.ALL;
+--use WORK.z80.ALL;
+use WORK.z80_inst.ALL;
 
 use IEEE.NUMERIC_STD.ALL;
 
@@ -85,7 +86,7 @@ begin
     begin
         if(rst = '1') then
             -- 8 bit reg
-            A_reg <= (others => '0');
+            A_reg <= "00001111";--(others => '0');
             F_reg <= (others => '0');
             temp_reg <= (others => '0');
             tempA_reg <= (others => '0');

@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-// Date        : Mon Jan 10 23:05:46 2022
+// Date        : Tue Jan 11 00:29:12 2022
 // Host        : DESKTOP-NPP0168 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_stub.v

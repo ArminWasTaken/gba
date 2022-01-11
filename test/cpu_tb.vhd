@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 library WORK;
-use WORK.z80.ALL;
+--use WORK.z80.ALL;
 use WORK.z80_inst.ALL;
 
 entity cpu_tb is

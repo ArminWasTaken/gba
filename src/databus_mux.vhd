@@ -23,7 +23,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 library WORK;
-use WORK.z80.ALL;
+--use WORK.z80.ALL;
 use WORK.z80_inst.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values

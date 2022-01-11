@@ -30,16 +30,16 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property ip_output_repo c:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+add_files c:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs/sources_1/ip/blk_mem_gen_0/test.coe
 read_vhdl -library xil_defaultlib {
-  C:/Users/nccas/VivadoWorkspace/gba/src/z80.vhd
-  C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd
   C:/Users/nccas/VivadoWorkspace/gba/src/z80_inst.vhd
   C:/Users/nccas/VivadoWorkspace/gba/src/ALU.vhd
-  C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd
-  C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd
   C:/Users/nccas/VivadoWorkspace/gba/src/ALU_block.vhd
-  C:/Users/nccas/VivadoWorkspace/gba/src/databus_mux.vhd
   C:/Users/nccas/VivadoWorkspace/gba/src/z80_microcode.vhd
+  C:/Users/nccas/VivadoWorkspace/gba/src/control.vhd
+  C:/Users/nccas/VivadoWorkspace/gba/src/databus_mux.vhd
+  C:/Users/nccas/VivadoWorkspace/gba/src/regfile.vhd
+  C:/Users/nccas/VivadoWorkspace/gba/src/cpu.vhd
 }
 read_ip -quiet C:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
 set_property used_in_implementation false [get_files -all c:/Users/nccas/VivadoWorkspace/gba/vivado/control/control.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]

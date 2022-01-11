@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 library WORK;
-use WORK.z80.ALL;
+--use WORK.z80.ALL;
 use WORK.z80_inst.ALL;
 
 package z80_microcode is
@@ -184,6 +184,8 @@ package body z80_microcode is
                 regpair_low := IX_L;
             when IY =>
                 regpair_low := IY_L;
+            when others =>
+                regpair_low := NONE;
         end case;
         
         return regpair_low;
@@ -211,6 +213,8 @@ package body z80_microcode is
                 regpair_high := IX_H;
             when IY =>
                 regpair_high := IY_H;
+            when others =>
+                regpair_high := NONE;
         end case;
         
         return regpair_high;
