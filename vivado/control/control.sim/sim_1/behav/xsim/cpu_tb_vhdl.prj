@@ -1,0 +1,14 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../src/z80_inst.vhd" \
+"../../../../../../src/ALU.vhd" \
+"../../../../../../src/ALU_block.vhd" \
+"../../../../../../src/z80_microcode.vhd" \
+"../../../../../../src/control.vhd" \
+"../../../../../../src/cpu.vhd" \
+"../../../../../../src/databus_mux.vhd" \
+"../../../../../../src/regfile.vhd" \
+"../../../../../../test/cpu_tb.vhd" \
+
+# Do not sort compile order
+nosort

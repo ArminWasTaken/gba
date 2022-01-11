@@ -53,7 +53,7 @@ begin
     -- State register
     sr: process (clk, rst)
     begin
-        if rst = '0' then
+        if rst = '1' then
             state_reg <= m1t1;
         elsif rising_edge(clk) then
             state_reg <= state_next;
@@ -63,7 +63,7 @@ begin
     -- Datapath register
     dpr: process (clk, rst)
     begin
-        if rst = '0' then
+        if rst = '1' then
             inst_reg <= (inst_type => NOP, 
                          orig_8b => NONE, 
                          dest_8b => NONE, 

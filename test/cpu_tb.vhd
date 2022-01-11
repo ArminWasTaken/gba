@@ -31,7 +31,7 @@ end cpu_tb;
 
 architecture Behavioral of cpu_tb is
     
-    component cpu_tb port(
+    component cpu port(
         clk : in std_logic;
         rst : in std_logic;
         addr : out std_logic_vector(15 downto 0);
@@ -55,7 +55,7 @@ architecture Behavioral of cpu_tb is
     
 begin
     
-    UUT: cpu_tb port map (
+    UUT: cpu port map (
              clk => clk_s,
              rst => rst_s,
              data_in => data_in_s,
@@ -75,10 +75,10 @@ begin
     stim_proc: process
     begin
 
-        wait for 100ns;
-
---        wait for 100ns;
-
+        rst_s <= '1';
+        wait for 20ns;
+        rst_s <= '0';
+        wait;
 --        wait for 100 ns;
 
 
