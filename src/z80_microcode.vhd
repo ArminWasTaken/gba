@@ -39,7 +39,7 @@ package z80_microcode is
     constant microcode_state_lut: microcode_state_t :=(
         NONE => (
             NONE => (
-                NOP => (m1t3 => m1t4, m1t4 => m1t1, others => m1t1),
+                NOP => (m1t1 => m1t2, m1t2 => m1t3, m1t3 => m1t4, others => m1t1),
                 others => (others => m1t1)
             ),
             others => (
@@ -48,7 +48,7 @@ package z80_microcode is
         ),
         REG => (
             IMPLIED => (
-                ADD => (m1t3 => m2t1, others => m1t1),
+                ADD => (m1t1 => m1t2, m1t2 => m1t3, m1t3 => m2t1, others => m1t1),
                 others => (others => m1t1)
             ),
             others => (
@@ -90,8 +90,8 @@ package z80_microcode is
             IMPLIED => (
                 ADD => (m1t1   => (en => '0', din => NONE, dout => NONE, addr => PC),
                         m1t2   => (en => '0', din => NONE, dout => NONE, addr => NONE),
-                        m1t3   => (en => '0', din => NONE, dout => NONE, addr => NONE),  
-                        m1t4   => (en => '0', din => NONE, dout => NONE, addr => NONE), 
+                        m1t3   => (en => '0', din => NONE, dout => orig8, addr => NONE),  
+                        m2t1   => (en => '0', din => NONE, dout => NONE, addr => NONE), 
                         others => (en => '0', din => NONE, dout => NONE, addr => NONE)),
                 others => (others => (en => '0', din => NONE, dout => NONE, addr => NONE))
             ),
@@ -125,8 +125,10 @@ package z80_microcode is
         ),
         REG => (
             IMPLIED => (
-                ADD => (m1t3 =>   (reg_enable => '1', alu_enable => '0', inst => ADD, din_alu => TEMP, dout_alu => NONE),  
-                        m2t1 =>   (reg_enable => '0', alu_enable => '1', inst => ADD, din_alu => NONE, dout_alu => ALU_OUT), 
+                ADD => (m1t1 =>   (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE), 
+                        m1t2 =>   (reg_enable => '0', alu_enable => '0', inst => ADD, din_alu => NONE, dout_alu => NONE), 
+                        m1t3 =>   (reg_enable => '1', alu_enable => '0', inst => ADD, din_alu => TEMP, dout_alu => NONE),  
+                        m2t1 =>   (reg_enable => '1', alu_enable => '1', inst => ADD, din_alu => A, dout_alu => ALU_OUT), 
                         others => (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE)),
                 others => (others => (reg_enable => '0', alu_enable => '0', inst => NONE, din_alu => NONE, dout_alu => NONE))
             ),
@@ -283,15 +285,15 @@ package body z80_microcode is
         variable sequence : state_sequence_t;
     begin
         
-        case state is
-            when m1t1 =>
-                ns := m1t2;
-            when m1t2 =>
-                ns := m1t3;
-            when others=>
+--        case state is
+--            when m1t1 =>
+--                ns := m1t2;
+--            when m1t2 =>
+--                ns := m1t3;
+--            when others=>
                 sequence := microcode_state_lut(inst.orig_dir, inst.dest_dir, inst.inst_type);
                 ns := sequence(state);
-        end case; 
+--        end case; 
         
         return ns;
         

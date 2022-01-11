@@ -79,7 +79,7 @@ begin
         -- Default operation
         regfile_next <= regfile_reg;
         SP_next <= SP_reg; -- Maybe missing mux + (+-1)
-        PC_next <= std_logic_vector(unsigned(PC_reg) + 1); -- Maybe missing mux + (+-1)
+        PC_next <= PC_reg; -- Maybe missing mux + (+-1)
         IX_next <= IX_reg;
         IY_next <= IY_reg;
         

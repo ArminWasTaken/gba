@@ -76,7 +76,7 @@ begin
     begin
 
         rst_s <= '1';
-        wait for 20ns;
+        wait for 2*clk_period + clk_period/4;
         rst_s <= '0';
         wait;
 --        wait for 100 ns;

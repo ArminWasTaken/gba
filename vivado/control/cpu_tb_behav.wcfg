@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="cpu_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="cpu_tb" />
+            <top_module name="glbl" />
+            <top_module name="z80_inst" />
+            <top_module name="z80_microcode" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1308000001fs"></ZoomEndTime>
+      <Cursor1Time time="490000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/cpu_tb/rst_s" type="logic">
+      <obj_property name="ElementShortName">rst_s</obj_property>
+      <obj_property name="ObjectShortName">rst_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/clk_s" type="logic">
+      <obj_property name="ElementShortName">clk_s</obj_property>
+      <obj_property name="ObjectShortName">clk_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="group60" type="group">
+      <obj_property name="label">Regfile</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/control" type="array">
+         <obj_property name="ElementShortName">control</obj_property>
+         <obj_property name="ObjectShortName">control</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/data_in" type="array">
+         <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/data_out" type="array">
+         <obj_property name="ElementShortName">data_out[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/addr_out" type="array">
+         <obj_property name="ElementShortName">addr_out[15:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_out[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/regfile_next" type="array">
+         <obj_property name="ElementShortName">regfile_next[1:6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">regfile_next[1:6][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/regfile_reg" type="array">
+         <obj_property name="ElementShortName">regfile_reg[1:6][7:0]</obj_property>
+         <obj_property name="ObjectShortName">regfile_reg[1:6][7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/IX_next" type="array">
+         <obj_property name="ElementShortName">IX_next[15:0]</obj_property>
+         <obj_property name="ObjectShortName">IX_next[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/IX_reg" type="array">
+         <obj_property name="ElementShortName">IX_reg[15:0]</obj_property>
+         <obj_property name="ObjectShortName">IX_reg[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/IY_next" type="array">
+         <obj_property name="ElementShortName">IY_next[15:0]</obj_property>
+         <obj_property name="ObjectShortName">IY_next[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/IY_reg" type="array">
+         <obj_property name="ElementShortName">IY_reg[15:0]</obj_property>
+         <obj_property name="ObjectShortName">IY_reg[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/SP_next" type="array">
+         <obj_property name="ElementShortName">SP_next[15:0]</obj_property>
+         <obj_property name="ObjectShortName">SP_next[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/SP_reg" type="array">
+         <obj_property name="ElementShortName">SP_reg[15:0]</obj_property>
+         <obj_property name="ObjectShortName">SP_reg[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/PC_next" type="array">
+         <obj_property name="ElementShortName">PC_next[15:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_next[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/REGFILE1/PC_reg" type="array">
+         <obj_property name="ElementShortName">PC_reg[15:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_reg[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group83" type="group">
+      <obj_property name="label">ALU Block</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/control" type="array">
+         <obj_property name="ElementShortName">control</obj_property>
+         <obj_property name="ObjectShortName">control</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/data_in" type="array">
+         <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/data_out" type="array">
+         <obj_property name="ElementShortName">data_out[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/A_reg" type="array">
+         <obj_property name="ElementShortName">A_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_reg[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/A_next" type="array">
+         <obj_property name="ElementShortName">A_next[7:0]</obj_property>
+         <obj_property name="ObjectShortName">A_next[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/F_reg" type="array">
+         <obj_property name="ElementShortName">F_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">F_reg[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/F_next" type="array">
+         <obj_property name="ElementShortName">F_next[7:0]</obj_property>
+         <obj_property name="ObjectShortName">F_next[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/temp_reg" type="array">
+         <obj_property name="ElementShortName">temp_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">temp_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/temp_next" type="array">
+         <obj_property name="ElementShortName">temp_next[7:0]</obj_property>
+         <obj_property name="ObjectShortName">temp_next[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/tempA_reg" type="array">
+         <obj_property name="ElementShortName">tempA_reg[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tempA_reg[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/tempA_next" type="array">
+         <obj_property name="ElementShortName">tempA_next[7:0]</obj_property>
+         <obj_property name="ObjectShortName">tempA_next[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/a_input" type="array">
+         <obj_property name="ElementShortName">a_input[7:0]</obj_property>
+         <obj_property name="ObjectShortName">a_input[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/b_input" type="array">
+         <obj_property name="ElementShortName">b_input[7:0]</obj_property>
+         <obj_property name="ObjectShortName">b_input[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/alu_output" type="array">
+         <obj_property name="ElementShortName">alu_output[7:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_output[7:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/flags_input" type="array">
+         <obj_property name="ElementShortName">flags_input[7:0]</obj_property>
+         <obj_property name="ObjectShortName">flags_input[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/ALUblock/flags_output" type="array">
+         <obj_property name="ElementShortName">flags_output[7:0]</obj_property>
+         <obj_property name="ObjectShortName">flags_output[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group98" type="group">
+      <obj_property name="label">Ctrl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/data" type="array">
+         <obj_property name="ElementShortName">data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/regfile_ctrl" type="array">
+         <obj_property name="ElementShortName">regfile_ctrl</obj_property>
+         <obj_property name="ObjectShortName">regfile_ctrl</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/alu_ctrl" type="array">
+         <obj_property name="ElementShortName">alu_ctrl</obj_property>
+         <obj_property name="ObjectShortName">alu_ctrl</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/mem_ctrl" type="array">
+         <obj_property name="ElementShortName">mem_ctrl</obj_property>
+         <obj_property name="ObjectShortName">mem_ctrl</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/mux_ctrl" type="other">
+         <obj_property name="ElementShortName">mux_ctrl</obj_property>
+         <obj_property name="ObjectShortName">mux_ctrl</obj_property>
+         <obj_property name="CustomSignalColor">#FFA500</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/state_next" type="other">
+         <obj_property name="ElementShortName">state_next</obj_property>
+         <obj_property name="ObjectShortName">state_next</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/state_reg" type="other">
+         <obj_property name="ElementShortName">state_reg</obj_property>
+         <obj_property name="ObjectShortName">state_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/inst_next" type="array">
+         <obj_property name="ElementShortName">inst_next</obj_property>
+         <obj_property name="ObjectShortName">inst_next</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/CONTROL1/inst_reg" type="array">
+         <obj_property name="ElementShortName">inst_reg</obj_property>
+         <obj_property name="ObjectShortName">inst_reg</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group104" type="group">
+      <obj_property name="label">Datamux</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/cpu_tb/UUT/DATA_MUX/reg_data" type="array">
+         <obj_property name="ElementShortName">reg_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/DATA_MUX/alu_data" type="array">
+         <obj_property name="ElementShortName">alu_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/DATA_MUX/mem_data" type="array">
+         <obj_property name="ElementShortName">mem_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">mem_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/DATA_MUX/ext_data" type="array">
+         <obj_property name="ElementShortName">ext_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ext_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/cpu_tb/UUT/DATA_MUX/databus" type="array">
+         <obj_property name="ElementShortName">databus[7:0]</obj_property>
+         <obj_property name="ObjectShortName">databus[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
